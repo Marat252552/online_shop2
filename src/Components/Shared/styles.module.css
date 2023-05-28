@@ -1,0 +1,45 @@
+.flexContainer {
+    display: flex;
+    gap: 10px
+}
+
+._container {
+    max-width: 1344px;
+    margin: 0px auto;
+    height: 100%
+}
+/* Отображение элемента в пк версии */
+.mainDisplayer {
+    display: auto;
+    height: 100%;
+    width: 100%;
+}
+/* Отображение элемента в мобильная версии */
+.mobileDisplayer {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    ._container {
+        max-width: none;
+        margin: 0px auto;
+        height: 100%
+    }
+    .flexContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px
+    }
+    /* Отображение элемента в пк версии */
+    .mainDisplayer {
+        display: none
+    }
+    /* Отображение элемента в мобильная версии */
+    .mobileDisplayer {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+}

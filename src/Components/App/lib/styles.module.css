@@ -1,0 +1,16 @@
+.body {
+    height: 100%;
+    font-size: 16px;
+    color: black;
+    font-family: Montserrat;
+}
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+}
+
+._container {
+    max-width: 1344px;
+    margin: 0px auto
+}

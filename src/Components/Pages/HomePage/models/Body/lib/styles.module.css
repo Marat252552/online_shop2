@@ -1,0 +1,16 @@
+.items_row {
+    display: flex;
+    gap: 5px;
+    width: 100%
+}
+
+@media (max-width: 600px) {
+    .items_row {
+        display: flex;
+        gap: 5px;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+
