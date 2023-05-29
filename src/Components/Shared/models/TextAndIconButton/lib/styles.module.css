@@ -1,0 +1,14 @@
+.button_elements_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.button_elements_container:active {
+    background: rgb(229, 229, 229);
+    border-radius: 5px;
+    padding: 5px;
+}

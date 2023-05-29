@@ -1,16 +1,11 @@
-import styles from './lib/styles.module.css'
 import sharedStyles from './../../../../Shared/styles.module.css'
 import BestItem from '../../../../Entities/BestItem'
-import Item from '../../../../Entities/Item'
+import ThreeItemsRow from '../../../../Widgets/ThreeItemsRow'
 
 const Body = () => {
-    return <div className={sharedStyles._container}>
+    return <div className={sharedStyles.max_width_container}>
         <BestItem />
-        <div className={styles.items_row}>
-            <Item />
-            <Item />
-            <Item />
-        </div>
+        <ThreeItemsRow />
     </div>
 }
 

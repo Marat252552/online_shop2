@@ -10,5 +10,6 @@ export type Item_T = {
 }
 
 export type Link_T = {
-    name: string
+    name: string,
+    path: string
 }

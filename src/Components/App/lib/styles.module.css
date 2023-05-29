@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-._container {
+.max_width_container {
     max-width: 1344px;
     margin: 0px auto
 }
