@@ -1,3 +1,4 @@
+import ItemImage from '../../../../../../Entities/ItemImage'
 import ScalableImage from '../../../../../../UI/ScalableImage'
 import styles from './lib/styles.module.css'
 

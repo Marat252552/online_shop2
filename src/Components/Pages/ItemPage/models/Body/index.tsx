@@ -10,7 +10,6 @@ const Body = () => {
         </div>
         <ItemInfo />
     </div>
-
 }
 
 export default Body

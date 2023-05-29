@@ -1,7 +1,6 @@
 .container {
     overflow: scroll;
     height: 200px;
-    border: solid 1px red;
     display: flex;
     flex-direction: column;
     width: 100%;

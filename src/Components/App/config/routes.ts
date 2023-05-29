@@ -1,3 +1,4 @@
+import BasketPage from "../../Pages/BasketPage";
 import GoodsPage from "../../Pages/GoodsPage";
 import HomePage from "../../Pages/HomePage";
 import ItemPage from "../../Pages/ItemPage";
@@ -19,6 +20,10 @@ const PublicRoutes: Route_T[] = [
     {
         path: '/item',
         component: ItemPage
+    },
+    {
+        path: '/basket',
+        component: BasketPage
     }
 ]
 

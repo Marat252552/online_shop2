@@ -17,7 +17,7 @@ const NormalVersion = ({links}: {links: Link_T[]}) => {
             <div className={styles.navbar_second_half}>
                 <HeaderSearchInput />
                 <HeartOutlined />
-                <ShoppingCartOutlined />
+                <ShoppingCartOutlined onClick={() => {navigate('/basket')}} />
             </div>
 
         </div>
