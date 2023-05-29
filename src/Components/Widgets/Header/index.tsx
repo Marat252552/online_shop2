@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom"
 const Header = () => {
     let navigate = useNavigate()
     let links = [
-        {name: 'Goods', path: '/goods'}
+        {name: 'Goods', path: '/goods'},
+        {name: 'Item', path: '/item'}
     ]
     return <div className={sharedStyles.max_width_container}>
         <div className={styles.container}>

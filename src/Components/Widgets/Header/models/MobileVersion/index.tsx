@@ -13,10 +13,11 @@ const MobileVersion = ({ links }: { links: Link_T[] }) => {
     }
     return <div className={sharedStyles.visible_on_mobile_version}>
         <div
-            onClick={toggleMenu}
             className={styles.container}
         >
-            <MenuOutlined style={{ fontSize: '25px' }} />
+            <MenuOutlined
+                onClick={toggleMenu}
+                style={{ fontSize: '25px' }} />
         </div>
         {isDropMenuOpen && links && <div className={styles.drop_menu}>
             {links.map(link => <span
