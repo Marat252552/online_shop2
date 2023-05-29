@@ -8,3 +8,7 @@ export type Item_T = {
     status: ItemStatus,
     price: string
 }
+
+export type Link_T = {
+    name: string
+}

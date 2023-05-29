@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    height: 60px;
+    gap: 20px;
+}
+
+.logo {
+    font-weight: 600;
+}

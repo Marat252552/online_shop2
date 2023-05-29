@@ -1,25 +1,20 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    height: 60px;
-}
-
-.end_of_navbar {
+.navbar_second_half {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 25px
 }
 
-.logo {
-    font-weight: 600;
-}
-
-.text_module {
+.navbar_first_half {
     font-size: 14px;
     display: flex;
     justify-content: space-around;
     gap: 20px
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,5 +1,5 @@
 .container {
-    width: 10%
+    width: 100%;
 }
 
 .square {
@@ -18,10 +18,5 @@
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
-}
-
-@media (max-width: 600px) {
-    .container {
-        width: 10px;
-    }
+    background-color: #F3F3F3;
 }
