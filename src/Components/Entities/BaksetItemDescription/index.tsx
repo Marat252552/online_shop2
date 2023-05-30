@@ -6,7 +6,7 @@ import TextAndIconButton from '../../Shared/models/TextAndIconButton'
 const BasketItemDescription = () => {
     return <div className={styles.main_container}>
         <div className={styles.text_module_container}>
-            <span style={{fontWeight: 'bold'}}>Iphone 12</span>
+            <div style={{fontWeight: 'bold'}}>Iphone 12</div>
             <span>By Apple</span>
         </div>
         
