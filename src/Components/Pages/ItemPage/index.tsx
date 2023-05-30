@@ -1,15 +1,13 @@
-import Footer from '../../Widgets/Footer'
-import Header from '../../Widgets/Header'
-import styles from './lib/styles.module.css'
+import PageMainTemplate from '../../Templates/Pages/PageMainTemplate'
 import Body from './models/Body'
 
 
 const ItemPage = () => {
-    return <div>
-        <Header />
+    return <>
+    <PageMainTemplate>
         <Body />
-        <Footer />
-    </div>
+    </PageMainTemplate>
+    </>
 }
 
 export default ItemPage

@@ -3,6 +3,7 @@ import GoodsPage from "../../Pages/GoodsPage";
 import HomePage from "../../Pages/HomePage";
 import ItemPage from "../../Pages/ItemPage";
 import LoginPage from "../../Pages/LoginPage";
+import SigninPage from "../../Pages/SigninPage";
 
 type Route_T = {
     path: string,
@@ -29,6 +30,10 @@ const PublicRoutes: Route_T[] = [
     {
         path: '/login',
         component: LoginPage
+    },
+    {
+        path: '/signin',
+        component: SigninPage
     }
 ]
 

@@ -4,6 +4,7 @@ import styles from './lib/styles.module.css'
 import sharedStyles from './../../../../Shared/styles.module.css'
 import { PartitionOutlined } from '@ant-design/icons'
 import MobileFilterNavbar from '../../../../Widgets/MobileFilterNavbar'
+import LargeModuleTemplate from '../../../../Templates/Modules/LargeModuleTemplate'
 
 
 const Body = () => {
@@ -11,17 +12,19 @@ const Body = () => {
     for (let index = 0; index < 10; index++) {
         itemsRows.push(index)
     }
-    return <div className={sharedStyles.max_width_container}>
-        <div className={styles.container}>
+    return <>
+        <LargeModuleTemplate>
+            <div className={styles.container}>
 
-            <FilterBar />
+                <FilterBar />
 
-            <div className={styles.items_module_container}>
-                <MobileFilterNavbar />
-                {itemsRows.map(el => <ThreeItemsRow key={el} />)}
+                <div className={styles.items_module_container}>
+                    <MobileFilterNavbar />
+                    {itemsRows.map(el => <ThreeItemsRow key={el} />)}
+                </div>
             </div>
-        </div>
-    </div>
+        </LargeModuleTemplate>
+    </>
 }
 
 export default Body

@@ -1,0 +1,9 @@
+.span:hover {
+    border-bottom: solid 1px black;
+    cursor: pointer;
+}
+
+.span {
+    border-bottom: solid 1px transparent;
+    cursor: pointer;
+}

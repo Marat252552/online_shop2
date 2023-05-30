@@ -1,12 +1,11 @@
-import styles from './lib/styles.module.css'
-import sharedStyles from './../../Shared/styles.module.css'
+import ModuleTemplate from '../../Templates/Modules/LargeModuleTemplate'
 
 const Footer = () => {
-    return <div className={styles.container}>
-        <div className={sharedStyles.max_width_container}>
-            <span style={{color: 'white'}}>About us</span>
-        </div>
-    </div>
+    return <>
+        <ModuleTemplate backgroundColor='black'>
+            <span style={{ color: 'white' }}>About us</span>
+        </ModuleTemplate>
+    </>
 }
 
 export default Footer

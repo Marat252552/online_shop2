@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import styles from './lib/styles.module.css'
 import PublicRoutes from './config/routes'
 
@@ -10,6 +10,7 @@ const App = () => {
                     {PublicRoutes.map(route => {
                         return <Route key={route.path} path={route.path} Component={route.component} />
                     })}
+                    <Route path='*' element={<Navigate to='/' />} />
                 </Routes>
             </BrowserRouter>
         </div>

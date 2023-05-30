@@ -1,14 +1,13 @@
-import Footer from '../../Widgets/Footer'
-import Header from '../../Widgets/Header'
-import styles from './lib/styles.module.css'
+import PageMainTemplate from '../../Templates/Pages/PageMainTemplate'
+import Body from './components/Body'
 
 
 const LoginPage = () => {
-    return <div className={styles.container}>
-        <Header />
-        LoginPage
-        <Footer />
-    </div>
+    return <>
+        <PageMainTemplate>
+            <Body />
+        </PageMainTemplate>
+    </>
 }
 
 export default LoginPage

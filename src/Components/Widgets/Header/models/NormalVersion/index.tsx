@@ -4,6 +4,7 @@ import { HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import sharedStyles from './../../../../Shared/styles.module.css'
 import { Link_T } from '../../../../Shared/types'
 import { useNavigate } from 'react-router-dom'
+import ActiveSpan from '../../../../UI/ActiveSpan'
 
 const NormalVersion = ({links}: {links: Link_T[]}) => {
     let navigate = useNavigate()
@@ -11,7 +12,7 @@ const NormalVersion = ({links}: {links: Link_T[]}) => {
         <div className={styles.container}>
 
             <div className={styles.navbar_first_half}>
-                {links && links.map(link => <span key={link.path} onClick={() => navigate(link.path)}>{link.name}</span>)}
+                {links && links.map(link => <ActiveSpan key={link.path} onClick={() => navigate(link.path)}>{link.name}</ActiveSpan>)}
             </div>
 
             <div className={styles.navbar_second_half}>

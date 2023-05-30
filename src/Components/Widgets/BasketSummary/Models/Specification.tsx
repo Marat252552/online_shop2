@@ -1,9 +1,9 @@
 
 
-const Specification = ({value, feature}: {value: string, feature: string}) => {
+const Specification = ({value, feature, isValueBold = false}: {value: string, feature: string, isValueBold?: boolean}) => {
     return <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
         <div>{feature}</div>
-        <div>{value}</div>
+        <div style={(isValueBold)? {fontWeight: 'bold'} : undefined}>{value}</div>
     </div>
 }
 

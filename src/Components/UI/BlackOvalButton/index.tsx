@@ -1,9 +1,9 @@
 import styles from './lib/styles.module.css'
 
 
-const BlackOvalButton = () => {
+const BlackOvalButton = ({value}: {value: string}) => {
     return <div className={styles.container}>
-        <span className={styles.text}>Order</span>
+        <span style={{userSelect: 'none'}}>{value}</span>
     </div>
 }
 

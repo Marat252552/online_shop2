@@ -12,9 +12,9 @@ const BasketSummary = () => {
             <Specification feature='Subtotal' value='20000'/>
             <Specification feature='Estimated delivery' value='Free'/>
             <JustLine />
-            <Specification feature='Total' value='20000' />
+            <Specification feature='Total' value='20000' isValueBold={true} />
         </div>
-        <BlackOvalButton />
+        <BlackOvalButton value='Order'/>
     </div>
 }
 

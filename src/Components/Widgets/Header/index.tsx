@@ -1,27 +1,29 @@
 import NormalVersion from "./models/NormalVersion"
-import sharedStyles from './../../Shared/styles.module.css'
 import styles from './lib/styles.module.css'
 import MobileVersion from "./models/MobileVersion"
 import { useNavigate } from "react-router-dom"
+import LargeModuleTemplate from "../../Templates/Modules/LargeModuleTemplate"
+import ActiveSpan from "../../UI/ActiveSpan"
 
 const Header = () => {
     let navigate = useNavigate()
     let links = [
-        {name: 'Goods', path: '/goods'},
-        {name: 'Item', path: '/item'},
-        {name: 'Login', path: '/login'}
+        { name: 'Goods', path: '/goods' },
+        { name: 'Item', path: '/item' },
+        { name: 'Login', path: '/login' }
     ]
-    return <div className={sharedStyles.max_width_container}>
-        <div className={styles.container}>
-            <div 
-                onClick={() => {navigate('/')}}
-                className={styles.logo}>
-                CONTROL
+    return <>
+        <LargeModuleTemplate>
+            <div className={styles.container}>
+                <ActiveSpan
+                    onClick={() => { navigate('/') }}
+                    style={{fontSize: '20px'}}
+                    >CONTROL</ActiveSpan>
+                <NormalVersion links={links} />
+                <MobileVersion links={links} />
             </div>
-            <NormalVersion links={links}/>
-            <MobileVersion links={links}/>
-        </div>
-    </div>
+        </LargeModuleTemplate>
+    </>
 }
 
 export default Header

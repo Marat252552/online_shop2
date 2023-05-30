@@ -1,14 +1,13 @@
-import { useState } from "react"
-import Header from "../../Widgets/Header"
 import Body from "./models/Body"
-import Footer from "../../Widgets/Footer"
+import PageMainTemplate from "../../Templates/Pages/PageMainTemplate"
+
 
 const HomePage = () => {
-    return <div>
-        <Header />
+    return <>
+    <PageMainTemplate>
         <Body />
-        <Footer />
-    </div>
+    </PageMainTemplate>
+    </>
 }
 
 export default HomePage

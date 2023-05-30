@@ -3,6 +3,7 @@
     font-size: 16px;
     color: black;
     font-family: Montserrat;
+    user-select: none;
 }
 
 .wrapper {
