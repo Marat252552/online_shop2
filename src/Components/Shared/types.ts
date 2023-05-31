@@ -18,3 +18,8 @@ export type SigninData_T = {
     login: string,
     password: string
 }
+
+export type User_T = {
+    _id: string,
+    login: string
+}

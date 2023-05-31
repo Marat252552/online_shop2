@@ -1,7 +1,7 @@
 import { FieldErrors } from "react-hook-form"
 import CustomTextField from "../../../../../UI/CustomTextField"
 import { Inputs_T } from "../lib/types"
-import AuthAPI from "../../../../../../API/AuthAPI"
+import AuthAPI from "../../../../../../API/AuthAPI/AuthAPI"
 
 
 
