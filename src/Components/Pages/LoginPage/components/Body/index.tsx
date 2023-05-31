@@ -14,7 +14,7 @@ const Body = () => {
                 <CustomTextField id="outlined-basic" label="Login" size='small' variant="outlined" />
                 <CustomTextField id="outlined-basic" label="Password" size='small' type='password' variant="outlined" />
                 <CustomCheckbox text='Remember me' />
-                <BlackOvalButton value='Login' />
+                <BlackOvalButton>Войти</BlackOvalButton>
                 <SigninSuggest />
             </FormTemplate>
         </SmallModuleTemplate>

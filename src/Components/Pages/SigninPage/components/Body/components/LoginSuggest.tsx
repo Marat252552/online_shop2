@@ -7,11 +7,11 @@ let div_style = { display: 'flex', justifyContent: 'space-between', alignItems: 
 const LoginSuggest = () => {
     let navigate = useNavigate()
     return <div style={div_style}>
-        <span>Already have account?</span>
+        <span>Уже есть аккаунт?</span>
         <ActiveSpan
             style={{ fontWeight: '600' }}
             onClick={() => { navigate('/login') }}
-        >Log in</ActiveSpan>
+        >Войти</ActiveSpan>
     </div>
 }
 

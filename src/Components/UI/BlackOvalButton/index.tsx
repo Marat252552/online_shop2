@@ -1,10 +1,10 @@
 import styles from './lib/styles.module.css'
 
 
-const BlackOvalButton = ({value}: {value: string}) => {
-    return <div className={styles.container}>
-        <span style={{userSelect: 'none'}}>{value}</span>
-    </div>
+const BlackOvalButton = (props: any) => {
+    return <button className={styles.container}>
+        {props.children}
+    </button>
 }
 
 export default BlackOvalButton

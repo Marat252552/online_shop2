@@ -6,82 +6,39 @@ import CustomCheckbox from '../../../../UI/CustomCheckbox'
 import LoginSuggest from './components/LoginSuggest'
 import { Inputs_T } from './lib/types'
 import { useForm } from 'react-hook-form'
-import { StyledEngineProvider } from '@mui/material'
+import AuthAPI from '../../../../../API/AuthAPI'
+import LoginField from './components/LoginField'
+import PasswordField from './components/PasswordField'
+import PasswordField2 from './components/Password2'
 
 
 const Body = () => {
+    let [signin] = AuthAPI.useSigninMutation()
     const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm<Inputs_T>({
         mode: 'onSubmit'
     })
-    const onSubmit = (values: Inputs_T) => {
-        console.log(values)
+    const onSubmit = async (values: Inputs_T) => {
+        let signinData = { login: values.login, password: values.password }
+        let response = await signin(signinData)
+        console.log(response)
     }
     return <div className={sharedStyles.small_max_width_container}>
         <span style={{ textAlign: 'center', fontSize: '50px' }}>CONTROL</span>
-        <StyledEngineProvider injectFirst>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <FormTemplate>
-                    <CustomTextField
-                        {...register('login', {
-                            required: 'Введите логин',
-                            maxLength: 20,
-                            pattern: {
-                                value: /^[a-z0-9]+$/i,
-                                message: 'Допустимы только латинские символы'
-                            },
-                            // validate: async (value) => {
-                            //     // try {
-                            //     //     await IsduplAPI(value)
-                            //     // } catch (e) {
-                            //     //     console.log(e)
-                            //     //     return 'Логин занят'
-                            //     // }
-                            // }
-                        })}
-                        error={errors.login}
-                        helperText={errors.login?.message}
-                        id="outlined-basic"
-                        label="Login"
-                        size='small'
-                        variant="outlined" />
 
-                    <CustomTextField
-                        {...register('password', {
-                            required: 'Введите пароль',
-                            pattern: {
-                                value: /^[a-z0-9]+$/i,
-                                message: 'Допустимы только латинские символы'
-                            }
-                        })}
-                        id="outlined-basic"
-                        type='password'
-                        label="Password"
-                        size='small'
-                        variant="outlined" />
+        <FormTemplate onSubmit={handleSubmit(onSubmit)}>
 
-                    <CustomTextField
-                        {...register('password2', {
-                            required: 'Подтвердите пароль',
-                            validate: (value, formValues) => {
-                                if (value !== formValues.password) {
-                                    return 'Пароли не совпадают'
-                                }
-                            }
-                        })}
-                        label={errors.password2?.message || 'Подтвердите пароль'}
-                        error={!!errors.password2 || !!null}
-                        helperText={errors.password2?.message || null}
-                        id="outlined-basic"
-                        type='password'
-                        size='small'
-                        variant="outlined" />
+            <LoginField errors={errors} register={register} />
 
-                    <CustomCheckbox text='Remember me' />
-                    <button type='submit'>Далее</button>
-                    <LoginSuggest />
-                </FormTemplate>
-            </form>
-        </StyledEngineProvider>
+            <PasswordField errors={errors} register={register} />
+
+            <PasswordField2 errors={errors} register={register} />
+
+            <CustomCheckbox text='Запомнить меня' />
+
+            <BlackOvalButton type='submit'>Создать аккаунт</BlackOvalButton>
+
+            <LoginSuggest />
+        </FormTemplate>
     </div>
 }
 

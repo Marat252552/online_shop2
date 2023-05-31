@@ -13,3 +13,8 @@ export type Link_T = {
     name: string,
     path: string
 }
+
+export type SigninData_T = {
+    login: string,
+    password: string
+}

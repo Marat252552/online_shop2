@@ -17,6 +17,7 @@ const CustomTextField = styled(TextField)({
         '&.Mui-focused fieldset': {
             borderColor: 'Black',
         },
-    },
+    }
 })
+
 export default CustomTextField

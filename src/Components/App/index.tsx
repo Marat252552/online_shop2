@@ -1,6 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import styles from './lib/styles.module.css'
 import PublicRoutes from './config/routes'
+import { setupStore } from '../../state/state'
+import { Provider } from 'react-redux'
 
 const App = () => {
     return <div className={styles.body}>
@@ -17,4 +19,14 @@ const App = () => {
     </div>
 }
 
-export default App
+let store = setupStore()
+
+const AppProvider = () => {
+    return <div>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </div>
+}
+
+export default AppProvider
