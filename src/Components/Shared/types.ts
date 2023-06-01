@@ -19,6 +19,18 @@ export type SigninData_T = {
     password: string
 }
 
+export type LoginReq_T = {
+    login: string,
+    password: string,
+    remember: boolean
+}
+
+export type SigninReq_T = {
+    login: string,
+    password: string,
+    remember: boolean
+}
+
 export type User_T = {
     _id: string,
     login: string

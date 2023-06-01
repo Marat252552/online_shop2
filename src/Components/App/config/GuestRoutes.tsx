@@ -1,16 +1,13 @@
+import { Route, Routes } from "react-router-dom";
 import BasketPage from "../../Pages/BasketPage";
 import GoodsPage from "../../Pages/GoodsPage";
 import HomePage from "../../Pages/HomePage";
 import ItemPage from "../../Pages/ItemPage";
 import LoginPage from "../../Pages/LoginPage";
 import SigninPage from "../../Pages/SigninPage";
+import { Route_T } from "../lib/types";
 
-type Route_T = {
-    path: string,
-    component: () => JSX.Element
-}
-
-const PublicRoutes: Route_T[] = [
+const GuestRoutes: Route_T[] = [
     {
         path: '/',
         component: HomePage
@@ -37,4 +34,4 @@ const PublicRoutes: Route_T[] = [
     }
 ]
 
-export default PublicRoutes
+export default GuestRoutes

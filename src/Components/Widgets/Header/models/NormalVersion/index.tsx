@@ -5,8 +5,14 @@ import sharedStyles from './../../../../Shared/styles.module.css'
 import { Link_T } from '../../../../Shared/types'
 import { useNavigate } from 'react-router-dom'
 import ActiveSpan from '../../../../UI/ActiveSpan'
+import LogoutButton from './components/LogoutButton'
+import { useAppSelector } from '../../../../../state/hooks'
+import {useEffect} from 'react'
+
 
 const NormalVersion = ({links}: {links: Link_T[]}) => {
+    let { token } = useAppSelector(state => state.UserSlice)
+
     let navigate = useNavigate()
     return <div className={sharedStyles.visible_on_fullscreen_version}>
         <div className={styles.container}>
@@ -19,6 +25,7 @@ const NormalVersion = ({links}: {links: Link_T[]}) => {
                 <HeaderSearchInput />
                 <HeartOutlined />
                 <ShoppingCartOutlined onClick={() => {navigate('/basket')}} />
+                {token !== '' && <LogoutButton />}
             </div>
 
         </div>

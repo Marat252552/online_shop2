@@ -4,13 +4,15 @@ import styles from './lib/styles.module.css'
 
 
 const PageMainTemplate = ({ children }: { children: JSX.Element }) => {
-    return <div className={styles.container}>
-        <div>
-            <Header />
-            {children}
+    return <>
+        <div className={styles.container}>
+            <div>
+                <Header />
+                {children}
+            </div>
+            <Footer />
         </div>
-        <Footer />
-    </div>
+    </>
 }
 
 export default PageMainTemplate
