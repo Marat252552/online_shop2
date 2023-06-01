@@ -14,7 +14,9 @@ const BasketSummary = () => {
             <JustLine />
             <Specification feature='Total' value='20000' isValueBold={true} />
         </div>
-        <BlackOvalButton value='Order'/>
+        <BlackOvalButton>
+            Order
+        </BlackOvalButton>
     </div>
 }
 

@@ -1,8 +1,8 @@
 import { MenuOutlined } from "@ant-design/icons"
-import sharedStyles from './../../../../Shared/styles.module.css'
+import sharedStyles from './../../../../../Shared/styles.module.css'
 import styles from './lib/styles.module.css'
 import { useState } from 'react'
-import { Link_T } from "../../../../Shared/types"
+import { Link_T } from "../../../../../Shared/types" 
 import { useNavigate } from "react-router-dom"
 
 const MobileVersion = ({ links }: { links: Link_T[] }) => {

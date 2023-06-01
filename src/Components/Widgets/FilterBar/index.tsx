@@ -1,9 +1,9 @@
-import BrandsFilterModule from '../../Entities/BrandsFilterModule'
+import FilterModule from '../../Entities/FilterModule'
 import styles from './lib/styles.module.css'
 
-const FilterBar = () => {
+const FilterBar = ({ elements }: { elements: Array<{ value: string, title: string }> }) => {
     return <div className={styles.visible_on_fullscreen_version_container}>
-        <BrandsFilterModule />
+        <FilterModule elements={elements} />
     </div>
 }
 

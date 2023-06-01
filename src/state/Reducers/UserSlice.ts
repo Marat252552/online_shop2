@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { User_T } from "../../Components/Shared/types";
+import { Statuses, User_T } from "../../Components/Shared/types";
 
 type initialState_T = {
     user: User_T,
@@ -8,8 +8,9 @@ type initialState_T = {
 
 const initialState: initialState_T = {
     user: {
-        _id: '_',
-        login: '_'
+        _id: '',
+        login: '',
+        status: Statuses.user
     },
     token: localStorage.getItem('accessToken') || ''
 }
@@ -27,7 +28,7 @@ const UserSlice = createSlice({
             localStorage.setItem('accessToken', accessToken)
         },
         logout(state) {
-            state.user = {login: '', _id: ''}
+            state.user = {login: '', _id: '', status: Statuses.user}
             state.token = ''
             localStorage.removeItem('accessToken')
         }

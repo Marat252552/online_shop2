@@ -3,25 +3,29 @@ import styles from './lib/styles.module.css'
 import { setupStore } from '../../state/state'
 import { Provider } from 'react-redux'
 import IsLoggedContainer from '../processes/IsLogged'
+import PublicRoutes from './config/PublicRoutes'
+import AdminRoutes from './config/AdminRoutes'
 import { useAppSelector } from '../../state/hooks'
-import GuestRoutes from './config/GuestRoutes'
-import UserRoutes from './config/UserRoutesData'
+import { Statuses } from '../Shared/types'
+import {useEffect} from 'react'
 
 
 const App = () => {
-    let { token } = useAppSelector(state => state.UserSlice)
+    const UserSlice = useAppSelector(state => state.UserSlice)
+    useEffect(() => {
+        console.log(UserSlice)
+    }, [UserSlice])
     return <div className={styles.body}>
         <div className={styles.wrapper}>
             <IsLoggedContainer>
                 <BrowserRouter>
                     <Routes>
-                        {token === '' && GuestRoutes.map(route => {
+                        {UserSlice.user.status === Statuses.user && PublicRoutes.map(route => {
                             return <Route key={route.path} path={route.path} Component={route.component} />
                         })}
-                        {token !== '' && UserRoutes.map(route => {
+                        {UserSlice.user.status === Statuses.admin && AdminRoutes.map(route => {
                             return <Route key={route.path} path={route.path} Component={route.component} />
                         })}
-                        {/* {token !== '' && <UserRoutes />} */}
                         <Route path='*' element={<Navigate to='/' />} />
                     </Routes>
                 </BrowserRouter>

@@ -1,17 +1,20 @@
-import NormalVersion from "./models/NormalVersion"
 import styles from './lib/styles.module.css'
-import MobileVersion from "./models/MobileVersion"
 import { useNavigate } from "react-router-dom"
 import LargeModuleTemplate from "../../Templates/Modules/LargeModuleTemplate"
 import ActiveSpan from "../../UI/ActiveSpan"
+import UserNormalVersion from './models/User/NormalVersion'
+import UserMobileVersion from './models/User/MobileVersion'
+import { useAppSelector } from '../../../state/hooks'
+import { Statuses } from '../../Shared/types'
+import AdminNormalVersion from './models/Specialist/Admin/NormalVersion'
 
 
 const Header = () => {
+    const {status} = useAppSelector(state => state.UserSlice.user)
     let navigate = useNavigate()
     let links = [
         { name: 'Goods', path: '/goods' },
         { name: 'Item', path: '/item' },
-        { name: 'Login', path: '/login' }
     ]
     return <>
         <LargeModuleTemplate>
@@ -20,8 +23,13 @@ const Header = () => {
                     onClick={() => { navigate('/') }}
                     style={{fontSize: '20px'}}
                     >CONTROL</ActiveSpan>
-                <NormalVersion links={links} />
-                <MobileVersion links={links} />
+                {status === Statuses.user && <>
+                    <UserNormalVersion links={links} />
+                    <UserMobileVersion links={links} />
+                </>}
+                {status === Statuses.admin && <>
+                    <AdminNormalVersion />
+                </>}
             </div>
         </LargeModuleTemplate>
     </>

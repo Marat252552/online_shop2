@@ -7,7 +7,7 @@ import LoginPage from "../../Pages/LoginPage";
 import SigninPage from "../../Pages/SigninPage";
 import { Route_T } from "../lib/types";
 
-const GuestRoutes: Route_T[] = [
+const PublicRoutes: Route_T[] = [
     {
         path: '/',
         component: HomePage
@@ -34,4 +34,4 @@ const GuestRoutes: Route_T[] = [
     }
 ]
 
-export default GuestRoutes
+export default PublicRoutes

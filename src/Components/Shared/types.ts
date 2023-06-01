@@ -31,7 +31,14 @@ export type SigninReq_T = {
     remember: boolean
 }
 
+export enum Statuses {
+    user = 'USER',
+    manager = 'MANAGER',
+    admin = 'ADMIN'
+}
+
 export type User_T = {
     _id: string,
-    login: string
+    login: string,
+    status: Statuses
 }

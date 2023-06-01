@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.usersList_module {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px
+}

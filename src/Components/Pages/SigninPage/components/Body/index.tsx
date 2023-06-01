@@ -9,14 +9,15 @@ import { useNavigate } from 'react-router-dom'
 
 const Body = () => {
     let [signin, { data: signinData }] = AuthAPI.useSigninMutation()
-    let navigate = useNavigate()
     let { setToken, setUser } = UserSlice.actions
+    let navigate = useNavigate()
     let dispatch = useAppDispatch()
     useEffect(() => {
         if (!signinData) return
         let {accessToken, user} = signinData
         dispatch(setUser({user}))
         dispatch(setToken({accessToken}))
+        navigate('/')
     }, [signinData])
 
     return <div className={sharedStyles.small_max_width_container}>
