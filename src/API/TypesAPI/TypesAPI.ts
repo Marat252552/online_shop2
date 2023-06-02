@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
-import { Brand_T, Type_T } from '../../Components/Shared/types'
+import { Type_T } from '../../Components/Shared/types'
 import baseQueryWithReauth from '../BaseQueryWithReauth'
 
 

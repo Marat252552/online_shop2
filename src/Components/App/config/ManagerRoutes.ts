@@ -1,5 +1,6 @@
 import BrandsControlPage from "../../Pages/BrandsControlPage"
 import CreateNewBrandPage from "../../Pages/CreateNewBrandPage"
+import CreateNewItemPage from "../../Pages/CreateNewItemPage"
 import CreateNewTypePage from "../../Pages/CreateNewTypePage"
 import ItemsControlPage from "../../Pages/ItemsControlPage"
 import ManagerHomePage from "../../Pages/ManagerHomePage"
@@ -30,6 +31,10 @@ const ManagerRoutes: Route_T[] = [
     {
         path: '/createtype',
         component: CreateNewTypePage
+    },
+    {
+        path: '/createitem',
+        component: CreateNewItemPage
     },
 
 ]
