@@ -8,22 +8,24 @@ import AdminRoutes from './config/AdminRoutes'
 import { useAppSelector } from '../../state/hooks'
 import { Statuses } from '../Shared/types'
 import {useEffect} from 'react'
+import ManagerRoutes from './config/ManagerRoutes'
 
 
 const App = () => {
-    const UserSlice = useAppSelector(state => state.UserSlice)
-    useEffect(() => {
-        console.log(UserSlice)
-    }, [UserSlice])
+    const {status} = useAppSelector(state => state.UserSlice.user)
+
     return <div className={styles.body}>
         <div className={styles.wrapper}>
             <IsLoggedContainer>
                 <BrowserRouter>
                     <Routes>
-                        {UserSlice.user.status === Statuses.user && PublicRoutes.map(route => {
+                        {status === Statuses.user && PublicRoutes.map(route => {
                             return <Route key={route.path} path={route.path} Component={route.component} />
                         })}
-                        {UserSlice.user.status === Statuses.admin && AdminRoutes.map(route => {
+                        {status === Statuses.admin && AdminRoutes.map(route => {
+                            return <Route key={route.path} path={route.path} Component={route.component} />
+                        })}
+                        {status === Statuses.manager && ManagerRoutes.map(route => {
                             return <Route key={route.path} path={route.path} Component={route.component} />
                         })}
                         <Route path='*' element={<Navigate to='/' />} />

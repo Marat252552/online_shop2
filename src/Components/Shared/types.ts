@@ -3,12 +3,6 @@ export enum ItemStatus {
     Old = 'Old'
 }
 
-export type Item_T = {
-    name: string,
-    status: ItemStatus,
-    price: string
-}
-
 export type Link_T = {
     name: string,
     path: string
@@ -41,4 +35,30 @@ export type User_T = {
     _id: string,
     login: string,
     status: Statuses
+}
+
+export type Element_T = {
+    value: string,
+    title: string
+}
+
+export type Brand_T = {
+    _id: string,
+    name: string,
+    img_name: string
+}
+
+export type Item_T = {
+    _id: string,
+    name: string,
+    brand_id: string,
+    type_id: string,
+    img_name: string,
+    description: string,
+    price: number
+}
+
+export type Type_T = {
+    _id: string,
+    name: string
 }

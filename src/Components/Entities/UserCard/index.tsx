@@ -1,46 +1,32 @@
-import { Statuses, User_T } from '../../Shared/types'
-import ItemImage from '../ItemImage'
+import { Statuses } from '../../Shared/types'
 import UserDescription from './components/UserDescription'
-import styles from './lib/styles.module.css'
-import TextAndIconButton from '../../Shared/models/TextAndIconButton'
-import { CaretUpOutlined, CaretDownOutlined, DeleteOutlined } from '@ant-design/icons'
+import iphone13 from './../../../Assets/Images/iphone13.png'
+import ElementCard from '../../UI/ElementCard'
+import ChangeAccessButton from './components/ChangeAccessButton'
+import DeleteUserButton from './components/DeleteUserButton'
+import { Props_T } from './lib/types'
 
-type API_T = ({ _id }: { _id: string }) => void
 
-const UserCard = ({ user, deleteUser, grantAccess, lowerAccess }: { user: User_T, deleteUser: API_T, grantAccess: API_T, lowerAccess: API_T }) => {
-    return <div className={styles.mainContainer}>
-        <div className={styles.container}>
-            <div className={styles.image_module}>
-                <ItemImage />
-            </div>
-            <div className={styles.descriptionAndButtons_module}>
-                <UserDescription user={user} />
-                <div className={styles.buttons_module}>
-                    {user.status !== Statuses.admin && <>
-                        <div onClick={() => {
-                            console.log('delete user')
-                            deleteUser({ _id: user._id })
-
-                        }}>
-                            <TextAndIconButton Icon={DeleteOutlined} text='Удалить пользователя' />
-                        </div>
-                        {
-                            user.status === 'USER' ?
-                                <div onClick={() => {grantAccess({_id: user._id})}}>
-                                    <TextAndIconButton Icon={CaretUpOutlined} text='Повысить до менеджера' />
-                                </div>
-                                :
-                                <div onClick={() => {lowerAccess({_id: user._id})}}>
-                                    <TextAndIconButton Icon={CaretDownOutlined} text='Понизить до пользователя' />
-                                </div>
-                        }
-
-                    </>}
-                </div>
-            </div>
-        </div>
-    </div>
-
+const UserCard = ({ user, deleteUser, grantAccess, lowerAccess }: Props_T) => {
+    return <>
+        <ElementCard
+            buttons={ user.status !== Statuses.admin &&
+                <>
+                    <ChangeAccessButton
+                        grantAccess={grantAccess}
+                        lowerAccess={lowerAccess}
+                        user={user}
+                    />
+                    <DeleteUserButton 
+                        deleteUser={deleteUser}
+                        user={user}
+                    />
+                </>
+            }
+            descriptions={<UserDescription user={user} />}
+            imgSRC={iphone13}
+        />
+    </>
 }
 
 export default UserCard

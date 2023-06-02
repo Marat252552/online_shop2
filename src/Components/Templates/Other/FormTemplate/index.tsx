@@ -2,7 +2,7 @@ import { StyledEngineProvider } from '@mui/material'
 import styles from './lib/styles.module.css'
 
 
-const FormTemplate = ({ children, onSubmit }: { children: JSX.Element[] | JSX.Element, onSubmit: any }) => {
+const FormTemplate = ({ children, onSubmit }: { children: any, onSubmit: any }) => {
     
     return <StyledEngineProvider injectFirst>
         <form onSubmit={onSubmit}>

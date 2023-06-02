@@ -1,10 +1,10 @@
 import styles from './lib/styles.module.css'
-import iphone13 from './../../../Assets/Images/iphone13.png'
 
-const ItemImage = () => {
+
+const ItemImage = ({src}: {src: string}) => {
     return <div className={styles.container}>
         <div className={styles.square}>
-            <img src={iphone13} />
+            <img src={src} />
         </div>
     </div>
 }

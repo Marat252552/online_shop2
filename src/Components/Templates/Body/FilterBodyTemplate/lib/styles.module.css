@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-.usersList_module {
+.list_module {
     display: flex;
     flex-direction: column;
     width: 100%;

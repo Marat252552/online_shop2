@@ -1,0 +1,35 @@
+.container {
+    border: solid 2px #F5F5F5;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    gap: 10px;
+}
+
+.image_module {
+    width: 80px;
+    
+}
+
+.descriptionAndButtons_module {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%
+}
+
+.buttons_module {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 10px
+}
+
+.description_module {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

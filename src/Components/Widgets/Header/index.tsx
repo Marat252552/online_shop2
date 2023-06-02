@@ -6,7 +6,7 @@ import UserNormalVersion from './models/User/NormalVersion'
 import UserMobileVersion from './models/User/MobileVersion'
 import { useAppSelector } from '../../../state/hooks'
 import { Statuses } from '../../Shared/types'
-import AdminNormalVersion from './models/Specialist/Admin/NormalVersion'
+import SpecialistNormalVersion from './models/Specialist/NormalVersion'
 
 
 const Header = () => {
@@ -27,8 +27,8 @@ const Header = () => {
                     <UserNormalVersion links={links} />
                     <UserMobileVersion links={links} />
                 </>}
-                {status === Statuses.admin && <>
-                    <AdminNormalVersion />
+                {status !== Statuses.user && <>
+                    <SpecialistNormalVersion />
                 </>}
             </div>
         </LargeModuleTemplate>

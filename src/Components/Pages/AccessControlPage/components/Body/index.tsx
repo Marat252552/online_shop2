@@ -1,9 +1,7 @@
 import { Element_T } from '../../../../Entities/FilterModule/lib/types'
-import FilterBar from '../../../../Widgets/FilterBar'
-import styles from './lib/styles.module.css'
-import LargeModuleTemplate from '../../../../Templates/Modules/LargeModuleTemplate'
 import UserCard from '../../../../Entities/UserCard'
 import AdminAPI from '../../../../../API/AdminAPI/AdminAPI'
+import FilterBodyTemplate from '../../../../Templates/Body/FilterBodyTemplate'
 
 
 const Body = () => {
@@ -16,23 +14,18 @@ const Body = () => {
     let [lowerAccess] = AdminAPI.useLowerAccessMutation()
     let { data } = AdminAPI.useGetUsersQuery()
     return <>
-        <LargeModuleTemplate>
-            <div className={styles.container}>
-                <FilterBar elements={elements} />
-                <div className={styles.usersList_module}>
-                    {data?.users && data.users.map(user => {
-                        return <>
-                            <UserCard
-                                grantAccess={grantAccess}
-                                lowerAccess={lowerAccess}
-                                deleteUser={deleteUser}
-                                user={user}
-                            />
-                        </>
-                    })}
-                </div>
-            </div>
-        </LargeModuleTemplate>
+        <FilterBodyTemplate elements={elements}>
+            {data?.users && data.users.map(user => {
+                return <>
+                    <UserCard
+                        grantAccess={grantAccess}
+                        lowerAccess={lowerAccess}
+                        deleteUser={deleteUser}
+                        user={user}
+                    />
+                </>
+            })}
+        </FilterBodyTemplate>
     </>
 }
 
