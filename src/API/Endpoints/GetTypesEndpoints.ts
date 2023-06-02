@@ -1,13 +1,10 @@
-import { createApi } from '@reduxjs/toolkit/dist/query/react'
-import { Type_T } from '../../Components/Shared/types'
-import baseQueryWithReauth from '../BaseQueryWithReauth'
+import { Type_T } from "../../Components/Shared/types";
+import { Build_T } from "../types";
 
 
-const TypesAPI = createApi({
-    reducerPath: 'typesAPI',
-    baseQuery: baseQueryWithReauth,
-    tagTypes: ['getTypes'],
-    endpoints: (build) => ({
+
+const GetTypesEndpoints = (build: Build_T) => {
+    return {
         createType: build.mutation<{ response: boolean }, {name: string}>({
             query: ({name}: {name: string}) => ({
                 url: `/types`,
@@ -22,7 +19,7 @@ const TypesAPI = createApi({
                 method: 'DELETE',
                 body: { _id }
             }),
-            invalidatesTags: ['getTypes']
+            invalidatesTags: ['getTypes', 'getItems']
         }),
         getTypes: build.query<{ types: Type_T[] }, void>({
             query: () => ({
@@ -30,7 +27,7 @@ const TypesAPI = createApi({
             }),
             providesTags: ['getTypes']
         }),
-    })
-})
+    }
+}
 
-export default TypesAPI
+export default GetTypesEndpoints

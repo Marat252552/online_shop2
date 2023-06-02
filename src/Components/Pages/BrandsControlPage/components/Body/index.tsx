@@ -1,34 +1,25 @@
 import { Button } from "antd"
-import { Brand_T, Element_T } from "../../../../Shared/types"
-import FilterBodyTemplate from "../../../../Templates/Body/FilterBodyTemplate"
 import BrandCard from "./Components/BrandCard"
 import { useNavigate } from "react-router-dom"
-import BrandsAPI from "../../../../../API/BrandsAPI/BrandsAPI"
-
+import RestAPI from "../../../../../API/RestAPI"
+import LargeModuleTemplate from "../../../../Templates/Modules/LargeModuleTemplate"
 
 
 const Body = () => {
-    let { data } = BrandsAPI.useGetBrandsQuery()
-    let [deleteBrand] = BrandsAPI.useDeleteBrandMutation()
-    let brands: Element_T[] = [
-        { title: 'Apple', value: 'Apple' },
-        { title: 'Microsoft', value: 'Microsoft' }
-    ]
+    let { data } = RestAPI.useGetBrandsQuery()
+    let [deleteBrand] = RestAPI.useDeleteBrandMutation()
     let navigate = useNavigate()
     return <>
-        <FilterBodyTemplate
-            elements={brands}
-            listModule={<>
-                <Button onClick={() => { navigate('/createbrand') }}>Создать новый брэнд</Button>
-                {data?.brands && data.brands.map(brand => {
-                    return <BrandCard
-                        key={brand._id}
-                        deleteBrand={deleteBrand}
-                        brand={brand}
-                    />
-                })}
-            </>}
-        />
+        <LargeModuleTemplate>
+            <Button onClick={() => { navigate('/createbrand') }}>Создать новый брэнд</Button>
+            {data?.brands && data.brands.map(brand => {
+                return <BrandCard
+                    key={brand._id}
+                    deleteBrand={deleteBrand}
+                    brand={brand}
+                />
+            })}
+        </LargeModuleTemplate>
     </>
 }
 

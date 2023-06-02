@@ -4,12 +4,12 @@ import { Inputs_T } from "./lib/types"
 import NameField from "./components/NameField"
 import { useState, useEffect } from 'react'
 import BlackOvalButton from "../../../../UI/BlackOvalButton"
-import BrandsAPI from "../../../../../API/BrandsAPI/BrandsAPI"
 import { useNavigate } from "react-router-dom"
+import RestAPI from "../../../../../API/RestAPI"
 
 
 const Form = () => {
-    let [createBrandAPI, { isSuccess }] = BrandsAPI.useCreateBrandMutation()
+    let [createBrandAPI, { isSuccess }] = RestAPI.useCreateBrandMutation()
     const { register, handleSubmit, reset, formState: { errors }} = useForm<Inputs_T>({
         mode: 'onSubmit'
     })

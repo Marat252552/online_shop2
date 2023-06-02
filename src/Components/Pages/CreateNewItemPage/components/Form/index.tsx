@@ -3,19 +3,17 @@ import FormTemplate from "../../../../Templates/Other/FormTemplate"
 import { Inputs_T } from "./lib/types"
 import NameField from "./components/NameField"
 import BlackOvalButton from "../../../../UI/BlackOvalButton"
-import BrandsAPI from "../../../../../API/BrandsAPI/BrandsAPI"
-import ItemsAPI from "../../../../../API/ItemsAPI/ItemsAPI"
 import BrandField from "./components/BrandField"
-import TypesAPI from "../../../../../API/TypesAPI/TypesAPI"
 import TypeField from "./components/TypeField"
 import PriceField from "./components/PriceField"
 import DescriptionField from "./components/DescriptionField"
+import RestAPI from "../../../../../API/RestAPI"
 
 
 const Form = () => {
-    let [createItemAPI] = ItemsAPI.useCreateItemMutation()
-    let { data: brandsData } = BrandsAPI.useGetBrandsQuery()
-    let { data: typesData } = TypesAPI.useGetTypesQuery()
+    let [createItemAPI] = RestAPI.useCreateItemMutation()
+    let { data: brandsData } = RestAPI.useGetBrandsQuery()
+    let { data: typesData } = RestAPI.useGetTypesQuery()
     const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs_T>({
         mode: 'onSubmit'
     })
@@ -26,7 +24,7 @@ const Form = () => {
         formData.append('name', name)
         formData.append('brand_id', brand_id)
         formData.append('description', description)
-        formData.append('price', price)
+        formData.append('price', price as any)
         formData.append('type_id', type_id)
         formData.append('img', filesList[0])
         createItemAPI(formData)

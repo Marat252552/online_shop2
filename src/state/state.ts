@@ -2,16 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import AuthAPI from "../API/AuthAPI/AuthAPI";
 import UserSlice from "./Reducers/UserSlice";
 import AdminAPI from "../API/AdminAPI/AdminAPI";
-import BrandsAPI from "../API/BrandsAPI/BrandsAPI";
-import TypesAPI from "../API/TypesAPI/TypesAPI";
-import ItemsAPI from "../API/ItemsAPI/ItemsAPI";
+import RestAPI from "../API/RestAPI";
+
 
 const rootReducer = combineReducers({
     [AuthAPI.reducerPath]: AuthAPI.reducer,
     [AdminAPI.reducerPath]: AdminAPI.reducer,
-    [BrandsAPI.reducerPath]: BrandsAPI.reducer,
-    [TypesAPI.reducerPath]: TypesAPI.reducer,
-    [ItemsAPI.reducerPath]: ItemsAPI.reducer,
+    [RestAPI.reducerPath]: RestAPI.reducer,
     UserSlice: UserSlice.reducer
 })
 
@@ -22,9 +19,7 @@ export const setupStore = () => {
         getDefaultMiddleware().concat([
             AuthAPI.middleware,
             AdminAPI.middleware,
-            BrandsAPI.middleware,
-            TypesAPI.middleware,
-            ItemsAPI.middleware
+            RestAPI.middleware
         ])
     })
 }

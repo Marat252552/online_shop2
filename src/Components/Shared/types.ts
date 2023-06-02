@@ -38,8 +38,8 @@ export type User_T = {
 }
 
 export type Element_T = {
-    value: string,
-    title: string
+    name: string,
+    _id: string
 }
 
 export type Brand_T = {

@@ -1,13 +1,10 @@
-import { createApi } from '@reduxjs/toolkit/dist/query/react'
-import { Brand_T, Item_T } from '../../Components/Shared/types'
-import baseQueryWithReauth from '../BaseQueryWithReauth'
+import { BaseQueryFn, FetchArgs, FetchBaseQueryError } from "@reduxjs/toolkit/dist/query"
+import { EndpointBuilder } from "@reduxjs/toolkit/dist/query/endpointDefinitions"
+import { Item_T } from "../../Components/Shared/types"
+import { Build_T } from "../types"
 
-
-const ItemsAPI = createApi({
-    reducerPath: 'itemsAPI',
-    baseQuery: baseQueryWithReauth,
-    tagTypes: ['getItems'],
-    endpoints: (build) => ({
+const GetItemsEndpoints = (build: Build_T ) => {
+    return {
         createItem: build.mutation<{ response: boolean }, any>({
             query: (formData: any) => ({
                 url: `/items`,
@@ -30,7 +27,7 @@ const ItemsAPI = createApi({
             }),
             providesTags: ['getItems']
         }),
-    })
-})
+    }
+}
 
-export default ItemsAPI
+export default GetItemsEndpoints

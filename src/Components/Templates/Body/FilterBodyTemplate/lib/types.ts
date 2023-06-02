@@ -1,6 +1,7 @@
-import { Element_T } from "../../../../Shared/types"
+import { Brand_T, Type_T } from "../../../../Shared/types"
 
 export type Props_T = {
-    elements: Element_T[], 
+    brands: Brand_T[] | undefined,
+    types: Type_T[] | undefined,
     listModule: any | undefined
 }

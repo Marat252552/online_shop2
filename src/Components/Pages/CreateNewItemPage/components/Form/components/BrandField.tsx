@@ -13,7 +13,10 @@ const BrandField = ({ register, brands }: { register: UseFormRegister<Inputs_T>,
             style={{ width: '100%' }}
         >
             {brands && brands.map(brand => {
-                return <option value={brand._id}>{brand.name}</option>
+                return <option
+                    key={brand._id}
+                    value={brand._id}
+                >{brand.name}</option>
             })}
         </select>
     </>

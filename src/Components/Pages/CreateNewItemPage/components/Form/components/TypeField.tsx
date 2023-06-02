@@ -13,7 +13,10 @@ const TypeField = ({ register, types }: { register: UseFormRegister<Inputs_T>, t
             style={{ width: '100%' }}
         >
             {types && types.map(type => {
-                return <option value={type._id}>{type.name}</option>
+                return <option
+                    key={type._id}
+                    value={type._id}
+                >{type.name}</option>
             })}
         </select>
     </>

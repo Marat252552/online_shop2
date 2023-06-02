@@ -2,19 +2,15 @@ import { useForm } from "react-hook-form"
 import FormTemplate from "../../../../Templates/Other/FormTemplate"
 import { Inputs_T } from "./lib/types"
 import NameField from "./components/NameField"
-import { useState, useEffect } from 'react'
 import BlackOvalButton from "../../../../UI/BlackOvalButton"
-import BrandsAPI from "../../../../../API/BrandsAPI/BrandsAPI"
-import { useNavigate } from "react-router-dom"
-import TypesAPI from "../../../../../API/TypesAPI/TypesAPI"
+import RestAPI from "../../../../../API/RestAPI"
 
 
 const Form = () => {
-    let [createType] = TypesAPI.useCreateTypeMutation()
+    let [createType] = RestAPI.useCreateTypeMutation()
     const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs_T>({
         mode: 'onSubmit'
     })
-    let navigate = useNavigate()
 
     const onSubmit = async ({ name }: Inputs_T) => {
         createType({name})
