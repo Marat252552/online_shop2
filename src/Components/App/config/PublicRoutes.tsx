@@ -17,7 +17,7 @@ const PublicRoutes: Route_T[] = [
         component: GoodsPage
     },
     {
-        path: '/item',
+        path: '/goods/:_id',
         component: ItemPage
     },
     {

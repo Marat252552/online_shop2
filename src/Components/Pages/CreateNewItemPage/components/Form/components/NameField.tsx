@@ -11,6 +11,7 @@ const NameField = ({ register, errors }: { register: any, errors: FieldErrors<In
                 required: 'Введите название',
                 maxLength: 20
             })}
+            InputLabelProps={{ style: { fontFamily: 'Montserrat' } }}
             error={!!errors.name}
             id="outlined-basic"
             label={errors.name?.message || 'Название'}

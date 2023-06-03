@@ -8,27 +8,39 @@ import TypeField from "./components/TypeField"
 import PriceField from "./components/PriceField"
 import DescriptionField from "./components/DescriptionField"
 import RestAPI from "../../../../../API/RestAPI"
+import UploadField from "./components/UploadField"
+import { useState, useEffect } from 'react'
+import { v4 } from 'uuid'
+import { useNavigate } from "react-router-dom"
 
 
 const Form = () => {
+    let [filesUIDs, setFilesUIDs] = useState<string[]>([])
+
+    let [session_id, setSession_id] = useState<string>('')
+
+    let generateSessionId = () => {
+        let id = v4()
+        setSession_id(id)
+    }
+
+    useEffect(() => {
+        generateSessionId()
+    }, [])
+
     let [createItemAPI] = RestAPI.useCreateItemMutation()
+    let navigate = useNavigate()
     let { data: brandsData } = RestAPI.useGetBrandsQuery()
     let { data: typesData } = RestAPI.useGetTypesQuery()
     const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs_T>({
         mode: 'onSubmit'
     })
 
-    const onSubmit = async ({ name, filesList, brand_id, description, price, type_id }: Inputs_T) => {
-        console.log(brand_id)
-        let formData = new FormData()
-        formData.append('name', name)
-        formData.append('brand_id', brand_id)
-        formData.append('description', description)
-        formData.append('price', price as any)
-        formData.append('type_id', type_id)
-        formData.append('img', filesList[0])
-        createItemAPI(formData)
+    const onSubmit = async ({ name, brand_id, description, price, type_id }: Inputs_T) => {
+        createItemAPI({ payload: { name, brand_id, description, price, type_id, filesUIDs }, session_id })
+        generateSessionId()
         reset()
+        navigate('/itemscontrol')
     }
     return <FormTemplate onSubmit={handleSubmit(onSubmit)}>
 
@@ -56,14 +68,11 @@ const Form = () => {
             errors={errors}
             register={register}
         />
+        {session_id !== '' && <UploadField
+            session_id={session_id}
+            setFilesUIDs={setFilesUIDs}
+        />}
 
-        <input
-            {...register('filesList', {
-                required: 'Загрузите изображение'
-            })}
-            type='file'
-        />
-        {errors.filesList?.message && <div>{errors.filesList.message.toString as any}</div>}
 
         <BlackOvalButton>Создать</BlackOvalButton>
 

@@ -10,7 +10,13 @@ const BrandField = ({ register, brands }: { register: UseFormRegister<Inputs_T>,
             {...register("brand_id", {
                 required: 'Выберите производителя'
             })}
-            style={{ width: '100%' }}
+            style={{
+                width: '100%',
+                border: 'solid 1px #E0E3E7',
+                borderRadius: '3px',
+                fontFamily: 'Montserrat',
+                padding: '10px'
+            }}
         >
             {brands && brands.map(brand => {
                 return <option

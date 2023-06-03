@@ -1,31 +1,45 @@
-import { Element_T } from '../../../../Entities/FilterModule/lib/types'
 import UserCard from '../../../../Entities/UserCard'
 import AdminAPI from '../../../../../API/AdminAPI/AdminAPI'
 import FilterBodyTemplate from '../../../../Templates/Body/FilterBodyTemplate'
+import StatusesFilterBar from '../../../../Widgets/UsersFilterBar'
+import { Element_T } from '../../../../Shared/types'
+import { useState } from 'react'
 
 
 const Body = () => {
-    let elements: Element_T[] = [
-        { value: 'USER', title: 'Пользователи' },
-        { value: 'MANAGER', title: 'Менеджеры' },
+    let statuses: Element_T[] = [
+        { _id: 'USER', name: 'Пользователи' },
+        { _id: 'MANAGER', name: 'Менеджеры' },
     ]
+    let [selectedStatuses, setSelectedStatuses] = useState<string[]>([])
+
     let [deleteUser] = AdminAPI.useDeleteUserMutation()
     let [grantAccess] = AdminAPI.useGrantAccessMutation()
     let [lowerAccess] = AdminAPI.useLowerAccessMutation()
     let { data } = AdminAPI.useGetUsersQuery()
     return <>
-        <FilterBodyTemplate elements={elements}>
-            {data?.users && data.users.map(user => {
-                return <>
-                    <UserCard
-                        grantAccess={grantAccess}
-                        lowerAccess={lowerAccess}
-                        deleteUser={deleteUser}
-                        user={user}
-                    />
-                </>
-            })}
-        </FilterBodyTemplate>
+
+        <FilterBodyTemplate
+            navbarModule={<>
+                <StatusesFilterBar
+                    selectedStatuses={selectedStatuses}
+                    setSelectedStatuses={setSelectedStatuses}
+                    statuses={statuses}
+                />
+            </>}
+            listModule={<>
+                {data?.users && data.users.map(user => {
+                    return <>
+                        <UserCard
+                            grantAccess={grantAccess}
+                            lowerAccess={lowerAccess}
+                            deleteUser={deleteUser}
+                            user={user}
+                        />
+                    </>
+                })}
+            </>}
+        />
     </>
 }
 

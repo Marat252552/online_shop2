@@ -13,6 +13,8 @@ const DescriptionField = ({ register, errors }: { register: UseFormRegister<Inpu
             })}
             multiline
             error={!!errors.description}
+            InputLabelProps={{ style: { fontFamily: 'Montserrat' } }}
+            label={errors.description?.message || 'Описание'}
             id="outlined-basic"
             size='medium'
             variant="outlined"

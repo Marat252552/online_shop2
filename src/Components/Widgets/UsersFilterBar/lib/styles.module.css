@@ -1,0 +1,16 @@
+.visible_on_fullscreen_version_container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 300px;
+    background: #F5F5F5;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .visible_on_fullscreen_version_container {
+        display: none;
+    }
+}

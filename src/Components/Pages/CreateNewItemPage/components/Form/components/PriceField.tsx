@@ -4,7 +4,7 @@ import { Inputs_T } from "../lib/types"
 import { FieldErrors, UseFormRegister } from "react-hook-form"
 
 
-const PriceField = ({errors, register}: {errors: FieldErrors<Inputs_T>, register: UseFormRegister<Inputs_T>}) => {
+const PriceField = ({ errors, register }: { errors: FieldErrors<Inputs_T>, register: UseFormRegister<Inputs_T> }) => {
     let [value, setValue] = useState('')
     let onChange = (e: any) => {
         const re = /^[0-9\b]+$/;
@@ -22,6 +22,7 @@ const PriceField = ({errors, register}: {errors: FieldErrors<Inputs_T>, register
             onChange={onChange}
             error={!!errors.price}
             id="outlined-basic"
+            InputLabelProps={{ style: { fontFamily: 'Montserrat' } }}
             label={errors.price?.message || 'Стоимость в рублях'}
             size='small'
             variant="outlined"

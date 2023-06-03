@@ -5,7 +5,7 @@ import ThreeItemsRow from '../../../../Widgets/ThreeItemsRow'
 const Body = () => {
     return <div className={sharedStyles.max_width_container}>
         <BestItem />
-        <ThreeItemsRow />
+        {/* <ThreeItemsRow /> */}
     </div>
 }
 

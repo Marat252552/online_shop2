@@ -53,7 +53,7 @@ export type Item_T = {
     name: string,
     brand_id: string,
     type_id: string,
-    img_name: string,
+    main_img_name: string,
     description: string,
     price: number
 }

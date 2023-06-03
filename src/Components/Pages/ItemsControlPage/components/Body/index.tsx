@@ -1,23 +1,30 @@
 import { Button } from "antd"
-import { Element_T } from "../../../../Shared/types"
 import FilterBodyTemplate from "../../../../Templates/Body/FilterBodyTemplate"
 import { useNavigate } from "react-router-dom"
 import ItemCard from "./Components/ItemCard"
 import RestAPI from "../../../../../API/RestAPI"
+import {useState, useEffect} from 'react'
 
 
 const Body = () => {
-    let elements: Element_T[] = [
-        { _id: 'Apple', name: 'Apple' }
-    ]
+    let [selectedBrands, setSelectedBrands] = useState<string[]>([])
+    let [selectedTypes, setSelectedTypes] = useState<string[]>([])
     
-    let { data: itemsData } = RestAPI.useGetItemsQuery()
+    useEffect(() => {
+        console.log(selectedBrands, selectedTypes)
+    }, [selectedBrands, selectedTypes])
+
+    let { data: itemsData } = RestAPI.useGetItemsQuery({brands: selectedBrands, types: selectedTypes})
     let { data: typesData } = RestAPI.useGetTypesQuery()
     let { data: brandsData } = RestAPI.useGetBrandsQuery()
     let [deleteItem] = RestAPI.useDeleteItemMutation()
     let navigate = useNavigate()
     return <>
         <FilterBodyTemplate
+            selectedBrands={selectedBrands}
+            selectedTypes={selectedTypes}
+            setSelectedBrands={setSelectedBrands}
+            setSelectedTypes={setSelectedTypes}
             brands={brandsData?.brands}
             types={typesData?.types}
             listModule={<>

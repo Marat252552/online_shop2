@@ -4,5 +4,4 @@ export type Inputs_T = {
     type_id: string,
     description: string,
     price: number,
-    filesList: File[]
 }
