@@ -1,17 +1,16 @@
 import React from 'react';
-import { InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload } from 'antd';
 import { uploadFileAPI } from '../../../../../../API/AxiosAPI';
 const { Dragger } = Upload;
 
 
-const UploadField = ({setFilesUIDs, session_id}: {session_id: string, setFilesUIDs: React.Dispatch<React.SetStateAction<string[]>>}) => {
+const UploadMainImageField = ({setMainFileUID, session_id}: {session_id: string, setMainFileUID: React.Dispatch<React.SetStateAction<string>>}) => {
 
     let uploadFile = async (options: any) => {
         const { onSuccess, onError, file, onProgress } = options;
         let {uid} = file
-        onProgress(100) 
+        onProgress(100)
         let formData = new FormData()
         formData.append('file', file)
         formData.append('uid', uid)
@@ -29,7 +28,6 @@ const UploadField = ({setFilesUIDs, session_id}: {session_id: string, setFilesUI
 
     const props: UploadProps = {
         name: 'file',
-        multiple: true,
         customRequest: uploadFile,
         onChange(info) {
             const { status } = info.file;
@@ -39,10 +37,9 @@ const UploadField = ({setFilesUIDs, session_id}: {session_id: string, setFilesUI
             if (status === 'done') {
                 message.success(`${info.file.name} file uploaded successfully.`);
                 if(info && info.fileList) {
-                    let fileListUIDs = info.fileList!.map(el => {
-                        return el.uid
-                    })
-                    setFilesUIDs(fileListUIDs)
+                    let fileUID = info.fileList![0].uid
+                    setMainFileUID(fileUID)
+                    console.log(fileUID)
                 }
                 
             } else if (status === 'error') {
@@ -55,14 +52,8 @@ const UploadField = ({setFilesUIDs, session_id}: {session_id: string, setFilesUI
     };
 
     return <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-            <InboxOutlined style={{color: 'black'}}/>
-        </p>
-        <p style={{fontFamily: 'Montserrat'}} className="ant-upload-text">Загрузите одно или несколько изображений</p>
-        <p style={{fontFamily: 'Montserrat'}} className="ant-upload-hint">
-            Нажмите здесь или перетащите файл сюда
-        </p>
+        <p style={{fontFamily: 'Montserrat'}} className="ant-upload-text">Загрузите одно главное изображение</p>
     </Dragger>
 }
 
-export default UploadField;
+export default UploadMainImageField;

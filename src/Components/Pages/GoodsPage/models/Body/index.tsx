@@ -1,10 +1,6 @@
-import ThreeItemsRow from '../../../../Widgets/ThreeItemsRow'
 import styles from './lib/styles.module.css'
-import sharedStyles from './../../../../Shared/styles.module.css'
-import { PartitionOutlined } from '@ant-design/icons'
 import MobileFilterNavbar from '../../../../Widgets/MobileFilterNavbar'
 import LargeModuleTemplate from '../../../../Templates/Modules/LargeModuleTemplate'
-import { Element_T } from '../../../../Shared/types'
 import BrandsAndTypesFilterBar from '../../../../Widgets/BrandsAndTypesFilterBar'
 import RestAPI from '../../../../../API/RestAPI'
 import { useState } from 'react'
@@ -18,10 +14,9 @@ const Body = () => {
 
     let [selectedBrands, setSelectedBrands] = useState<string[]>([])
     let [selectedTypes, setSelectedTypes] = useState<string[]>([])
+    let [searchValue, setSearchValue] = useState<string>('')
 
-    let { data: itemsData } = RestAPI.useGetItemsQuery({ brands: selectedBrands, types: selectedTypes })
-
-
+    let { data: itemsData } = RestAPI.useGetItemsQuery({ brands: selectedBrands, types: selectedTypes, searchValue })
 
     return <>
         <LargeModuleTemplate>
@@ -34,6 +29,7 @@ const Body = () => {
                     setSelectedBrands={setSelectedBrands}
                     selectedTypes={selectedTypes}
                     setSelectedTypes={setSelectedTypes}
+                    setSearchValue={setSearchValue}
                 />
 
                 <div className={styles.items_module_container}>
@@ -42,6 +38,7 @@ const Body = () => {
                         {itemsData && itemsData?.items.map(item => <Item item={item} />)}
                     </div>
                 </div>
+                
             </div>
         </LargeModuleTemplate>
     </>

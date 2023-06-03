@@ -1,11 +1,10 @@
 import styles from './lib/styles.module.css'
 import { Image } from 'antd'
-import iphone13pro from './../../../Assets/Images/iphone13.png'
-import ItemImage from '../../Entities/ItemImage'
+import { backendURL } from '../../App/config/env'
 
-const ScalableImage = () => {
+const ScalableImage = ({img_name}: {img_name: string}) => {
     return <div className={styles.container}>
-        <Image className={styles.image} src={iphone13pro} />
+        <Image className={styles.image} src={backendURL + '/' + img_name} />
     </div>
 }
 

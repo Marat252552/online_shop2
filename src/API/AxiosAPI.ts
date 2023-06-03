@@ -1,8 +1,5 @@
 import axios from 'axios'
 import { backendURL } from '../Components/App/config/env'
-import { CreateItemReq_T } from './Endpoints/types'
-
-
 
 
 export const instanse = axios.create({

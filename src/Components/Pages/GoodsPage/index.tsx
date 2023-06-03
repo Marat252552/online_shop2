@@ -4,9 +4,9 @@ import Body from "./models/Body"
 
 const GoodsPage = () => {
     return <>
-    <PageMainTemplate>
-        <Body />
-    </PageMainTemplate>
+        <PageMainTemplate>
+            <Body />
+        </PageMainTemplate>
     </>
 }
 

@@ -8,14 +8,3 @@
     background: #F5F5F5;
     border-radius: 10px;
 }
-
-.selectors_module {
-    
-    width: 100%
-}
-
-@media (max-width: 600px) {
-    .visible_on_fullscreen_version_container {
-        display: none;
-    }
-}

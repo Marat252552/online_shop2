@@ -1,4 +1,3 @@
-import { Option_T } from "../../../Entities/CustomSelect/lib/types"
 import { Brand_T, Type_T } from "../../../Shared/types"
 
 export type Props_T = {
@@ -8,4 +7,5 @@ export type Props_T = {
     setSelectedBrands: React.Dispatch<React.SetStateAction<string[]>>, 
     selectedTypes: string[],
     setSelectedTypes: React.Dispatch<React.SetStateAction<string[]>>, 
+    setSearchValue: React.Dispatch<React.SetStateAction<string>>
 }

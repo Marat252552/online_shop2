@@ -1,12 +1,13 @@
-import ItemImage from '../../../../../../Entities/ItemImage'
+import { Item_T } from '../../../../../../Shared/types'
 import ScalableImage from '../../../../../../UI/ScalableImage'
 import styles from './lib/styles.module.css'
 
 
-const ItemGallery = () => {
+const ItemGallery = ({ item }: { item: Item_T }) => {
     return <div className={styles.images_container}>
-        <ScalableImage />
-        <ScalableImage />
+        {item.images_names.map(img_name => {
+            return <ScalableImage img_name={img_name} />
+        })}
     </div>
 }
 

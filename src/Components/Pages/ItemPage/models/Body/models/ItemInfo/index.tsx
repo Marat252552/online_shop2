@@ -6,7 +6,7 @@ import styles from './lib/styles.module.css'
 
 const ItemInfo = ({item}: {item: Item_T}) => {
     return <div className={styles.container}>
-        <ItemGallery />
+        <ItemGallery item={item}/>
         <ItemAnnotation item={item}/>
     </div>
 }

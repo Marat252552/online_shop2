@@ -12,10 +12,12 @@ import UploadField from "./components/UploadField"
 import { useState, useEffect } from 'react'
 import { v4 } from 'uuid'
 import { useNavigate } from "react-router-dom"
+import UploadMainImageField from "./components/UploadMainImageFiled"
 
 
 const Form = () => {
     let [filesUIDs, setFilesUIDs] = useState<string[]>([])
+    let [mainFileUID, setMainFileUID] = useState<string>('')
 
     let [session_id, setSession_id] = useState<string>('')
 
@@ -37,7 +39,7 @@ const Form = () => {
     })
 
     const onSubmit = async ({ name, brand_id, description, price, type_id }: Inputs_T) => {
-        createItemAPI({ payload: { name, brand_id, description, price, type_id, filesUIDs }, session_id })
+        createItemAPI({ payload: { name, brand_id, description, price, type_id, filesUIDs, mainFileUID }, session_id })
         generateSessionId()
         reset()
         navigate('/itemscontrol')
@@ -68,10 +70,16 @@ const Form = () => {
             errors={errors}
             register={register}
         />
-        {session_id !== '' && <UploadField
+
+        <UploadMainImageField
+            session_id={session_id}
+            setMainFileUID={setMainFileUID}
+        />
+
+        <UploadField
             session_id={session_id}
             setFilesUIDs={setFilesUIDs}
-        />}
+        />
 
 
         <BlackOvalButton>Создать</BlackOvalButton>

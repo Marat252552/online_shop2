@@ -54,6 +54,7 @@ export type Item_T = {
     brand_id: string,
     type_id: string,
     main_img_name: string,
+    images_names: string[],
     description: string,
     price: number
 }
