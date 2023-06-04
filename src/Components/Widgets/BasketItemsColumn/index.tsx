@@ -1,11 +1,10 @@
-import { Skeleton } from "antd"
-import RestAPI from "../../../API/RestAPI"
 import BasketItem from "../../Entities/BasketItem"
 import styles from './lib/styles.module.css'
 import BasketItemSkeleton from "../../UI/BasketItemSkeleton"
+import { BasketItemsColumn_T } from "./lib/types"
 
-const BasketItemsColumn = ({cart_items} : {cart_items: [undefined] | CartItem_T[] | undefined}) => {
 
+const BasketItemsColumn: BasketItemsColumn_T = ({ cart_items }) => {
 
     return <div className={styles.basket_items_column}>
 

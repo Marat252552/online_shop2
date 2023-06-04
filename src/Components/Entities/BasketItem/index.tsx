@@ -1,6 +1,7 @@
 import RestAPI from '../../../API/RestAPI'
 import { backendURL } from '../../App/config/env'
 import { CartItem_T } from '../../Shared/types'
+import BasketItemSkeleton from '../../UI/BasketItemSkeleton'
 import BasketItemDescription from '../BaksetItemDescription'
 import BasketItemPrice from '../BasketItemPrice'
 import ItemImage from '../ItemImage'
@@ -13,19 +14,23 @@ const BasketItem = ({ cart_item }: { cart_item: CartItem_T }) => {
 
     let item = data?.item
 
-    return <div className={styles.main_container}>
+    return <>
+        <div className={styles.main_container}>
 
-        {item && <>
-            <div className={styles.image_and_description_module}>
-                <div className={styles.image_container}>
-                    <ItemImage src={backendURL + '/' + item.main_img_name} />
+            {item && <>
+                <div className={styles.image_and_description_module}>
+                    <div className={styles.image_container}>
+                        <ItemImage src={backendURL + '/' + item.main_img_name} />
+                    </div>
+                    <BasketItemDescription item={item} />
                 </div>
-                <BasketItemDescription item={item} />
-            </div>
-            <BasketItemPrice price={item.price} />
-        </>}
+                <BasketItemPrice price={item.price} />
+            </>}
 
-    </div>
+        </div>
+    </>
+
+
 }
 
 export default BasketItem

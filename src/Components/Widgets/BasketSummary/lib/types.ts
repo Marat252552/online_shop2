@@ -1,5 +1,5 @@
-export type BasketSummary_T = ({ subtotal, total, delivery }: {
-    subtotal: number | undefined,
-    total: number | undefined,
-    delivery: number | undefined
+import { CartItem_T } from "../../../Shared/types"
+
+export type BasketSummary_T = ({ cart_items }: {
+    cart_items: CartItem_T[] | undefined
 }) => JSX.Element
