@@ -5,6 +5,7 @@
 .mainContainer {
     display: grid;
     grid-template-columns: 6fr 4fr;
+    gap: 100px;
 }
 
 @media (max-width: 600px) {

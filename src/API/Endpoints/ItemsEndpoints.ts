@@ -45,7 +45,6 @@ const GetItemsEndpoints = (build: Build_T ) => {
                     value, item_id
                 }
             }),
-            invalidatesTags: ['getItems']
         }),
         getRating: build.query<{ rating: number }, {item_id: string}>({
             query: ({item_id}: {item_id: string}) => ({
@@ -53,7 +52,7 @@ const GetItemsEndpoints = (build: Build_T ) => {
                 params: {
                     item_id
                 }
-            })
+            }),
         }),
     }
 }

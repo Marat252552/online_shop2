@@ -1,5 +1,6 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { backendURL } from '../Components/App/config/env'
+import { Item_T } from '../Components/Shared/types'
 
 
 export const instanse = axios.create({
@@ -35,4 +36,12 @@ instanse.interceptors.response.use((config: any) => {
 
 export const uploadFileAPI = (formData: any) => {
     return instanse.post('/files', formData)
+}
+
+type getItemAPI_T = ({ _id }: {
+    _id: string;
+}) => Promise<AxiosResponse<{item: Item_T}, any>>
+
+export const getItemAPI: getItemAPI_T = ({_id}: {_id: string}) => {
+    return instanse.get(`/items/item/${_id}`)
 }

@@ -63,3 +63,10 @@ export type Type_T = {
     _id: string,
     name: string
 }
+
+export type CartItem_T = {
+    _id: string,
+    user_id: string,
+    item_id: string,
+    amount: number
+}

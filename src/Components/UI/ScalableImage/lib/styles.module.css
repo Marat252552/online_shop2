@@ -1,3 +1,10 @@
 .container {
-    width: 100%;
+    width: 100px;
+    height: 100px;
+    border: solid 1px red
+}
+
+.image {
+    width: 100px;
+    height: 100px;
 }

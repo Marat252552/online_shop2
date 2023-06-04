@@ -8,7 +8,7 @@ export type CreateItemReq_T = {
         description: string,
         price: number,
         type_id: string,
-        filesUIDs: string[],
+        imagesUIDs: string[],
         mainFileUID: string
     }
 }
@@ -25,5 +25,17 @@ export type GetItemsRes_T = {
 
 export type AddRatingReq_T = {
     value: number,
+    item_id: string
+}
+
+export type AddItemToCartItemReq_T = {
+    item_id: string
+}
+
+export type RemoveItemFromCartReq_T = {
+    item_id: string
+}
+
+export type GetCartItemAmountReq_T = {
     item_id: string
 }
