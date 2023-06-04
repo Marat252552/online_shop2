@@ -8,7 +8,7 @@ export type CreateItemReq_T = {
         description: string,
         price: number,
         type_id: string,
-        filesUIDs: string[],
+        imagesUIDs: string[],
         mainFileUID: string
     }
 }

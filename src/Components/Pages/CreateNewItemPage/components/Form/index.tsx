@@ -8,39 +8,40 @@ import TypeField from "./components/TypeField"
 import PriceField from "./components/PriceField"
 import DescriptionField from "./components/DescriptionField"
 import RestAPI from "../../../../../API/RestAPI"
-import UploadField from "./components/UploadField"
 import { useState, useEffect } from 'react'
 import { v4 } from 'uuid'
 import { useNavigate } from "react-router-dom"
-import UploadMainImageField from "./components/UploadMainImageFiled"
+import UploadMainImageField from "./components/UploadMainImageField"
+import UploadOtherImagesField from "./components/UploadOtherImagesField"
 
 
 const Form = () => {
-    let [filesUIDs, setFilesUIDs] = useState<string[]>([])
-    let [mainFileUID, setMainFileUID] = useState<string>('')
-
+    // unique session_id that's used to work with images uploading and using on them backend
     let [session_id, setSession_id] = useState<string>('')
 
     let generateSessionId = () => {
         let id = v4()
         setSession_id(id)
     }
-
+    // generating session_id after mounting Form component
     useEffect(() => {
         generateSessionId()
     }, [])
 
+    // initializing Rest API
     let [createItemAPI] = RestAPI.useCreateItemMutation()
-    let navigate = useNavigate()
     let { data: brandsData } = RestAPI.useGetBrandsQuery()
     let { data: typesData } = RestAPI.useGetTypesQuery()
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<Inputs_T>({
+
+    // initializing react-hook-form
+    const { register, handleSubmit, reset, formState: { errors }, getValues } = useForm<Inputs_T>({
         mode: 'onSubmit'
     })
 
-    const onSubmit = async ({ name, brand_id, description, price, type_id }: Inputs_T) => {
-        createItemAPI({ payload: { name, brand_id, description, price, type_id, filesUIDs, mainFileUID }, session_id })
-        generateSessionId()
+    // actions to be completed after pressing onSubmit button
+    let navigate = useNavigate()
+    const onSubmit = async ({ name, brand_id, description, price, type_id, mainImageUID, imagesUIDs }: Inputs_T) => {
+        createItemAPI({ payload: { name, brand_id, description, price, type_id, imagesUIDs, mainFileUID: mainImageUID }, session_id })
         reset()
         navigate('/itemscontrol')
     }
@@ -72,15 +73,17 @@ const Form = () => {
         />
 
         <UploadMainImageField
+            errors={errors}
+            register={register}
             session_id={session_id}
-            setMainFileUID={setMainFileUID}
         />
 
-        <UploadField
+        <UploadOtherImagesField
+            getValues={getValues}
+            errors={errors}
             session_id={session_id}
-            setFilesUIDs={setFilesUIDs}
+            register={register}
         />
-
 
         <BlackOvalButton>Создать</BlackOvalButton>
 

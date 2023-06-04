@@ -53,7 +53,7 @@ const GetItemsEndpoints = (build: Build_T ) => {
                 params: {
                     item_id
                 }
-            })
+            }),
         }),
     }
 }
