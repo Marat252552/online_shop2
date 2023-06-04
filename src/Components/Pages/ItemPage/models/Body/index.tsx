@@ -3,7 +3,6 @@ import ItemImage from '../../../../Entities/ItemImage'
 import styles from './lib/styles.module.css'
 import ItemInfo from './models/ItemInfo'
 import RestAPI from '../../../../../API/RestAPI'
-import { backendURL } from '../../../../App/config/env'
 import LargeModuleTemplate from '../../../../Templates/Modules/LargeModuleTemplate'
 
 
@@ -18,7 +17,7 @@ const Body = () => {
         <LargeModuleTemplate>
             {itemData?.item && <div className={styles.mainContainer}>
                 <div className={styles.image_container}>
-                    <ItemImage src={backendURL + '/' + itemData.item.main_img_name} />
+                    <ItemImage img_name={itemData.item.main_img_name} />
                 </div>
                 <ItemInfo item={itemData.item} />
             </div>}

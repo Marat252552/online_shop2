@@ -16,7 +16,8 @@ const Body = () => {
     let [deleteUser] = AdminAPI.useDeleteUserMutation()
     let [grantAccess] = AdminAPI.useGrantAccessMutation()
     let [lowerAccess] = AdminAPI.useLowerAccessMutation()
-    let { data } = AdminAPI.useGetUsersQuery()
+
+    let { data } = AdminAPI.useGetUsersQuery({statuses: selectedStatuses})
     return <>
 
         <FilterBodyTemplate

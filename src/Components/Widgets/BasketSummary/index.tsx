@@ -37,10 +37,10 @@ const BasketSummary: BasketSummary_T = ({ cart_items }) => {
     return <div className={styles.container}>
         <h3>Summary</h3>
         <div className={styles.main_info_module}>
-            <Specification feature='Subtotal' value={total || <SkeletonInput active size='small'/>} />
+            <Specification feature='Subtotal' value={(total)? total + '₽' : <SkeletonInput active size='small'/>} />
             <Specification feature='Estimated delivery' value={delivery} />
             <JustLine />
-            <Specification feature='Total' value={total || <SkeletonInput active size='small'/>} isValueBold={true} />
+            <Specification feature='Total' value={(total)? total + '₽' : <SkeletonInput active size='small'/>} isValueBold={true} />
         </div>
         <BlackOvalButton>
             Order

@@ -24,7 +24,7 @@ let generateEndpoints = (build: Build_T) => {
 const RestAPI = createApi({
     reducerPath: 'restAPI',
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['getItems', 'getBrands', 'getTypes', 'getRating', 'getCartItems'],
+    tagTypes: ['getItems', 'getBrands', 'getTypes', 'getRating', 'getCartItems', 'getCardItemAmount'],
     endpoints: (build: Build_T) => generateEndpoints(build)
 })
 

@@ -32,6 +32,10 @@ export type AddItemToCartItemReq_T = {
     item_id: string
 }
 
+export type RemoveAllSameItemsFromCart_T = {
+    item_id: string
+}
+
 export type RemoveItemFromCartReq_T = {
     item_id: string
 }

@@ -11,6 +11,8 @@ const BasketItemDescription = ({ item }: { item: Item_T }) => {
 
     let { data } = RestAPI.useGetBrandsQuery()
 
+    let [removeAllSameItems] = RestAPI.useRemoveAllSameItemsFromCartMutation()
+
     let brand_name = data?.brands.find(el => el._id === item.brand_id)?.name
 
     return <div className={styles.main_container}>
@@ -22,14 +24,16 @@ const BasketItemDescription = ({ item }: { item: Item_T }) => {
                         <span>{brand_name}</span>
                     </>
                     :
-                    <Skeleton active/>
+                    <Skeleton active />
             }
 
         </div>
         <AddToCartButton item={item} />
         <div className={styles.buttons_module_container}>
             <TextAndIconButton Icon={HeartOutlined} />
-            <TextAndIconButton Icon={DeleteOutlined} />
+            <div onClick={() => { removeAllSameItems({ item_id: item._id }) }}>
+                <TextAndIconButton Icon={DeleteOutlined} />
+            </div>
         </div>
     </div>
 }

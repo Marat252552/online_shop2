@@ -46,7 +46,7 @@ const GetItemsEndpoints = (build: Build_T ) => {
                 }
             }),
         }),
-        getRating: build.query<{ rating: number }, {item_id: string}>({
+        getRating: build.query<{ rating: number, amount: number }, {item_id: string}>({
             query: ({item_id}: {item_id: string}) => ({
                 url: `/items/rating`,
                 params: {

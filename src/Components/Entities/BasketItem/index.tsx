@@ -20,7 +20,7 @@ const BasketItem = ({ cart_item }: { cart_item: CartItem_T }) => {
             {item && <>
                 <div className={styles.image_and_description_module}>
                     <div className={styles.image_container}>
-                        <ItemImage src={backendURL + '/' + item.main_img_name} />
+                        <ItemImage img_name={item.main_img_name} />
                     </div>
                     <BasketItemDescription item={item} />
                 </div>
