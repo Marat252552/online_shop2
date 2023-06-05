@@ -1,7 +1,5 @@
 import RestAPI from '../../../API/RestAPI'
-import { backendURL } from '../../App/config/env'
-import { CartItem_T, FavoriteItem_T } from '../../Shared/types'
-import BasketItemSkeleton from '../../UI/BasketItemSkeleton'
+import { FavoriteItem_T } from '../../Shared/types'
 import BasketItemDescription from '../BaksetItemDescription'
 import BasketItemPrice from '../BasketItemPrice'
 import ItemImage from '../ItemImage'

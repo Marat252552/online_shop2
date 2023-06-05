@@ -1,7 +1,6 @@
 import { Button } from "antd"
 import { Brand_T, Item_T, Type_T } from "../../../../../../Shared/types"
 import ElementCard from "../../../../../../UI/ElementCard"
-import { backendURL } from "../../../../../../App/config/env"
 
 
 const ItemCard = ({ item, type, brand, deleteItem }: { item: Item_T, type: Type_T | undefined, brand: Brand_T | undefined, deleteItem: ({_id}: {_id: string}) => void }) => {

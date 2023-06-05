@@ -1,4 +1,3 @@
-import React from 'react';
 import { Image } from 'antd';
 import { Item_T } from '../../../../../../Shared/types';
 import { backendURL } from '../../../../../../App/config/env';

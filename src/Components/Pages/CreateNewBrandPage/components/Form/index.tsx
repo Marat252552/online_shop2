@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import FormTemplate from "../../../../Templates/Other/FormTemplate"
 import { Inputs_T } from "./lib/types"
 import NameField from "./components/NameField"
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import BlackOvalButton from "../../../../UI/BlackOvalButton"
 import { useNavigate } from "react-router-dom"
 import RestAPI from "../../../../../API/RestAPI"

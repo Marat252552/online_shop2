@@ -1,6 +1,5 @@
 import RestAPI from '../../../API/RestAPI';
 import Item from '../../Entities/Item'
-import { Item_T } from '../../Shared/types';
 import styles from './lib/styles.module.css'
 
 

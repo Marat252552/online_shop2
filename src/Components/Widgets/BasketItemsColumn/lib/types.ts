@@ -1,5 +1,5 @@
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
-import { CartItem_T, FavoriteItem_T } from "../../../Shared/types";
+import { CartItem_T } from "../../../Shared/types";
 import { SerializedError } from "@reduxjs/toolkit";
 
 export type BasketItemsColumn_T = ({ cart_items }: {

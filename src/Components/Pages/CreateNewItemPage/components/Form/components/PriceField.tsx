@@ -8,7 +8,7 @@ const PriceField = ({ errors, register }: { errors: FieldErrors<Inputs_T>, regis
     
     let [value, setValue] = useState('')
 
-    const { onChange, onBlur, name, ref, required } = register('price', {
+    const { onChange, onBlur, name, ref } = register('price', {
         required: 'Укажите стоимость'
     });
 

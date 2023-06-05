@@ -14,13 +14,14 @@ const Body = () => {
         console.log(selectedBrands, selectedTypes)
     }, [selectedBrands, selectedTypes])
 
-    let { data: itemsData } = RestAPI.useGetItemsQuery({brands: selectedBrands, types: selectedTypes})
+    let { data: itemsData } = RestAPI.useGetItemsQuery({brands: selectedBrands, types: selectedTypes, searchValue: ''})
     let { data: typesData } = RestAPI.useGetTypesQuery()
     let { data: brandsData } = RestAPI.useGetBrandsQuery()
     let [deleteItem] = RestAPI.useDeleteItemMutation()
     let navigate = useNavigate()
     return <>
         <FilterBodyTemplate
+        // @ts-ignore
             selectedBrands={selectedBrands}
             selectedTypes={selectedTypes}
             setSelectedBrands={setSelectedBrands}

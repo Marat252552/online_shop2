@@ -1,4 +1,3 @@
-import sharedStyles from './../../Shared/styles.module.css'
 import bestItemImage from './../../../Assets/Images/iphones.webp'
 import styles from './lib/styles.module.css'
 import Annotation from './models/Annotation'

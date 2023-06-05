@@ -7,7 +7,6 @@ import PublicRoutes from './config/PublicRoutes'
 import AdminRoutes from './config/AdminRoutes'
 import { useAppSelector } from '../../state/hooks'
 import { Statuses } from '../Shared/types'
-import {useEffect} from 'react'
 import ManagerRoutes from './config/ManagerRoutes'
 
 

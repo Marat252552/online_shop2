@@ -1,6 +1,4 @@
 import { Button } from "antd"
-import { Element_T } from "../../../../Shared/types"
-import FilterBodyTemplate from "../../../../Templates/Body/FilterBodyTemplate"
 import { useNavigate } from "react-router-dom"
 import TypeCard from "./Components/TypeCard"
 import RestAPI from "../../../../../API/RestAPI"

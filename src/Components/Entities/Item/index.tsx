@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { backendURL } from '../../App/config/env'
 import { Item_T } from '../../Shared/types'
 import ItemImage from '../ItemImage'
 import styles from './lib/styles.module.css'

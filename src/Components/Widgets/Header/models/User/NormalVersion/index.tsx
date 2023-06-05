@@ -1,4 +1,3 @@
-import HeaderSearchInput from '../../../../../UI/HeaderSearchInput'
 import styles from './lib/styles.module.css'
 import { HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import sharedStyles from './../../../../../Shared/styles.module.css'
