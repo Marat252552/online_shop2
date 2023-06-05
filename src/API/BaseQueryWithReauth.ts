@@ -1,12 +1,13 @@
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, fetchBaseQuery } from "@reduxjs/toolkit/dist/query"
 import UserSlice from "../state/Reducers/UserSlice"
+import { backendURL } from "../Components/App/config/env"
 
 let baseQuery: BaseQueryFn<
     string | FetchArgs,
     any,
     FetchBaseQueryError
 > = fetchBaseQuery({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: backendURL,
     credentials: 'include',
     prepareHeaders: (headers) => {
         const token = localStorage.getItem('accessToken')
