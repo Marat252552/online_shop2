@@ -5,6 +5,7 @@ import GetItemsEndpoints from './Endpoints/ItemsEndpoints'
 import { Build_T } from './types'
 import GetTypesEndpoints from './Endpoints/GetTypesEndpoints'
 import GetCartEndpoints from './Endpoints/GetCartEndpoints'
+import GetFavoritesEndpoints from './Endpoints/GetFavoritesEndpoints'
 
 
 let generateEndpoints = (build: Build_T) => {
@@ -12,11 +13,13 @@ let generateEndpoints = (build: Build_T) => {
     let ItemsEndpoints = GetItemsEndpoints(build)
     let TypesEndpoints = GetTypesEndpoints(build)
     let CartEndpoints = GetCartEndpoints(build)
+    let FavoritesEndpoints = GetFavoritesEndpoints(build)
     let endpoints = {
         ...BrandsEndpoints,
         ...ItemsEndpoints,
         ...TypesEndpoints,
-        ...CartEndpoints
+        ...CartEndpoints,
+        ...FavoritesEndpoints
     }
     return endpoints
 }

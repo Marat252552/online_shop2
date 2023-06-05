@@ -70,3 +70,9 @@ export type CartItem_T = {
     item_id: string,
     amount: number
 }
+
+export type FavoriteItem_T = {
+    _id: string,
+    user_id: string,
+    item_id: string
+}

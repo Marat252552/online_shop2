@@ -1,20 +1,19 @@
 import styles from './lib/styles.module.css'
 import sharedStyles from './../../../../Shared/styles.module.css'
+import BasketItemsColumn from '../../../../Widgets/FavoriteItemsColumn'
 import BasketSummary from '../../../../Widgets/BasketSummary'
 import RestAPI from '../../../../../API/RestAPI'
-import BasketItemsColumn from '../../../../Widgets/BasketItemsColumn'
 
 
 const Body = () => {
 
-    let { data } = RestAPI.useGetCartItemsQuery()
+    let { data } = RestAPI.useGetFavoritesQuery()
 
-    let cart_items = data?.cart_items
+    let favorite_items = data?.favorite_items
 
     return <div className={sharedStyles.medium_max_width_container}>
         <div className={styles.main_container}>
-            <BasketItemsColumn cart_items={cart_items} />
-            <BasketSummary cart_items={cart_items} />
+            <BasketItemsColumn favorite_items={favorite_items} />
         </div>
     </div>
 }

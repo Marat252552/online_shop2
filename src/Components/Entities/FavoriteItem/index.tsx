@@ -1,14 +1,16 @@
 import RestAPI from '../../../API/RestAPI'
-import { CartItem_T } from '../../Shared/types'
+import { backendURL } from '../../App/config/env'
+import { CartItem_T, FavoriteItem_T } from '../../Shared/types'
+import BasketItemSkeleton from '../../UI/BasketItemSkeleton'
 import BasketItemDescription from '../BaksetItemDescription'
 import BasketItemPrice from '../BasketItemPrice'
 import ItemImage from '../ItemImage'
 import styles from './lib/styles.module.css'
 
 
-const BasketItem = ({ cart_item }: { cart_item: CartItem_T }) => {
+const FavoriteItem = ({ favorite_item }: { favorite_item: FavoriteItem_T }) => {
 
-    let { data } = RestAPI.useGetItemQuery({ _id: cart_item.item_id })
+    let { data } = RestAPI.useGetItemQuery({ _id: favorite_item.item_id })
 
     let item = data?.item
 
@@ -24,10 +26,11 @@ const BasketItem = ({ cart_item }: { cart_item: CartItem_T }) => {
                 </div>
                 <BasketItemPrice price={item.price} />
             </>}
+
         </div>
     </>
 
 
 }
 
-export default BasketItem
+export default FavoriteItem

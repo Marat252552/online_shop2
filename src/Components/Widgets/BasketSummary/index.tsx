@@ -14,10 +14,13 @@ const BasketSummary: BasketSummary_T = ({ cart_items }) => {
 
     let [total, setTotal] = useState<number>(0)
 
+    let [loading, setLoading] = useState<boolean>(false)
+
     useEffect(() => {
         if (!cart_items) return
 
         let asyncFunct = async () => {
+            setLoading(true)
             let a = 0
             for await (const cart_item of cart_items!) {
                 let { item_id, amount } = cart_item
@@ -30,20 +33,21 @@ const BasketSummary: BasketSummary_T = ({ cart_items }) => {
                 }
             }
             setTotal(a)
+            setLoading(false)
         }
         asyncFunct()
     }, [cart_items])
     
     return <div className={styles.container}>
-        <h3>Summary</h3>
+        <h3>Корзина</h3>
         <div className={styles.main_info_module}>
-            <Specification feature='Subtotal' value={(total)? total + '₽' : <SkeletonInput active size='small'/>} />
-            <Specification feature='Estimated delivery' value={delivery} />
+            <Specification feature='Промежуточный итог' value={(loading)? <SkeletonInput active size='small'/>: total + '₽' } />
+            <Specification feature='Доставка' value={delivery + '₽'} />
             <JustLine />
-            <Specification feature='Total' value={(total)? total + '₽' : <SkeletonInput active size='small'/>} isValueBold={true} />
+            <Specification feature='Итого' value={(loading)? <SkeletonInput active size='small'/> : total + '₽'} isValueBold={true} />
         </div>
         <BlackOvalButton>
-            Order
+            Далее
         </BlackOvalButton>
     </div>
 }

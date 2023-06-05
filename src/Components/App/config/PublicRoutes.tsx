@@ -6,6 +6,7 @@ import ItemPage from "../../Pages/ItemPage";
 import LoginPage from "../../Pages/LoginPage";
 import SigninPage from "../../Pages/SigninPage";
 import { Route_T } from "../lib/types";
+import FavoritesPage from "../../Pages/FavoritesPage";
 
 const PublicRoutes: Route_T[] = [
     {
@@ -31,6 +32,10 @@ const PublicRoutes: Route_T[] = [
     {
         path: '/signin',
         component: SigninPage
+    },
+    {
+        path: '/favorites',
+        component: FavoritesPage
     }
 ]
 

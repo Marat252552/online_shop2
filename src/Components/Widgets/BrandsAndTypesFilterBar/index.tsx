@@ -22,7 +22,7 @@ const BrandsAndTypesFilterBar = ({ brands, types, selectedBrands, selectedTypes,
             value={middleSearchValue}
             onChange={e => { setMiddleSearchValue(e.target.value) }}
             size='small'
-            placeholder='Поиск'
+            placeholder='Поиск по названию'
         />
         <div onClick={onSearch}>
             <BlackOvalButton >Поиск</BlackOvalButton>

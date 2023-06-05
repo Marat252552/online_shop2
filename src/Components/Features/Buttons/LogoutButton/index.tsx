@@ -1,7 +1,7 @@
 import { LogoutOutlined } from "@ant-design/icons"
-import AuthAPI from "../../API/AuthAPI/AuthAPI"
-import UserSlice from "../../state/Reducers/UserSlice"
-import { useAppDispatch } from "../../state/hooks" 
+import AuthAPI from "../../../../API/AuthAPI/AuthAPI"
+import UserSlice from "../../../../state/Reducers/UserSlice"
+import { useAppDispatch } from "../../../../state/hooks" 
 import { useEffect } from 'react'
 
 const LogoutButton = () => {

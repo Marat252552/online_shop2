@@ -1,13 +1,13 @@
-import RestAPI from "../../../API/RestAPI"
-import { Item_T } from "../../Shared/types"
+import RestAPI from "../../../../API/RestAPI"
+import { Item_T } from "../../../Shared/types"
 import AlreadyAddedButton from "./modules/AlreadyAddedButton"
 import NotAddedButton from "./modules/NotAddedButton"
 
 
 
-const AddToCartButton = ({ item }: { item: Item_T }) => {
-    let [addItemToCart] = RestAPI.useAddToCartMutation()
-    let [removeFromCart] = RestAPI.useRemoveFromCartMutation()
+const CartButton = ({ item }: { item: Item_T }) => {
+    let [addItemToCart, {isLoading: isLoadingAdd}] = RestAPI.useAddToCartMutation()
+    let [removeFromCart, {isLoading: isLoadingRemove}] = RestAPI.useRemoveFromCartMutation()
 
     let { data: cartItemAmountData, refetch } = RestAPI.useGetCartItemAmountQuery({ item_id: item._id })
 
@@ -27,7 +27,7 @@ const AddToCartButton = ({ item }: { item: Item_T }) => {
         <div>
             {
                 (amount > 0) ?
-                    <AlreadyAddedButton amount={amount} increment={increment} decrement={decrement}/>
+                    <AlreadyAddedButton isLoadingAdd={isLoadingAdd} isLoadingRemove={isLoadingRemove} amount={amount} increment={increment} decrement={decrement}/>
                     :
                     <div onClick={increment}>
                         <NotAddedButton />
@@ -37,4 +37,4 @@ const AddToCartButton = ({ item }: { item: Item_T }) => {
     </>
 }
 
-export default AddToCartButton
+export default CartButton

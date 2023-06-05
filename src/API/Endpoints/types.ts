@@ -43,3 +43,11 @@ export type RemoveItemFromCartReq_T = {
 export type GetCartItemAmountReq_T = {
     item_id: string
 }
+
+export type AddFavoriteReq_T = {
+    item_id: string
+}
+
+export type RemoveFavoriteReq_T = {
+    favorite_item_id: string
+}

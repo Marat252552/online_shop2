@@ -1,10 +1,11 @@
-import { DeleteOutlined, HeartOutlined } from '@ant-design/icons'
+import { DeleteOutlined } from '@ant-design/icons'
 import styles from './lib/styles.module.css'
 import TextAndIconButton from '../../Shared/models/TextAndIconButton'
 import { Item_T } from '../../Shared/types'
 import RestAPI from '../../../API/RestAPI'
-import AddToCartButton from '../../UI/AddToCartButton'
 import { Skeleton } from 'antd'
+import FavoriteButton from '../../Features/Buttons/FavoriteButton'
+import CartButton from '../../Features/Buttons/CartButton'
 
 
 const BasketItemDescription = ({ item }: { item: Item_T }) => {
@@ -28,11 +29,15 @@ const BasketItemDescription = ({ item }: { item: Item_T }) => {
             }
 
         </div>
-        <AddToCartButton item={item} />
+
+        <CartButton item={item} />
+        
         <div className={styles.buttons_module_container}>
-            <TextAndIconButton Icon={HeartOutlined} />
-            <div onClick={() => { removeAllSameItems({ item_id: item._id }) }}>
-                <TextAndIconButton Icon={DeleteOutlined} />
+
+            <FavoriteButton item={item}/>
+
+            <div onClick={() => {removeAllSameItems({item_id: item._id})}}>
+                <TextAndIconButton Icon={DeleteOutlined}/>
             </div>
         </div>
     </div>
