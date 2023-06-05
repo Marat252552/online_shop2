@@ -12,3 +12,14 @@
     justify-content: end;
     gap: 10px
 }
+
+.filter_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 150px;
+    left: 0px;
+    height: 100%;
+    z-index: 3;
+    width: 100%
+}

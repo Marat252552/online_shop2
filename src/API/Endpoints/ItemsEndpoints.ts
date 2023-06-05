@@ -2,7 +2,7 @@ import { Item_T } from "../../Components/Shared/types"
 import { Build_T } from "../types"
 import { AddRatingReq_T, CreateItemReq_T, GetItemsReq_T, GetItemsRes_T, GetThreeBestItemsDataRes_T } from "./types"
 
-const GetItemsEndpoints = (build: Build_T ) => {
+const GetItemsEndpoints = (build: Build_T) => {
     return {
         createItem: build.mutation<{ response: boolean }, CreateItemReq_T>({
             query: (ReqData: CreateItemReq_T) => ({
@@ -12,8 +12,8 @@ const GetItemsEndpoints = (build: Build_T ) => {
             }),
             invalidatesTags: ['getItems']
         }),
-        deleteItem: build.mutation<void, {_id: string}>({
-            query: ({_id}: {_id: string}) => ({
+        deleteItem: build.mutation<void, { _id: string }>({
+            query: ({ _id }: { _id: string }) => ({
                 url: `/items`,
                 method: 'DELETE',
                 body: { _id }
@@ -21,7 +21,7 @@ const GetItemsEndpoints = (build: Build_T ) => {
             invalidatesTags: ['getItems']
         }),
         getItems: build.query<GetItemsRes_T, GetItemsReq_T>({
-            query: ({types, brands, searchValue}: GetItemsReq_T) => ({
+            query: ({ types, brands, searchValue }: GetItemsReq_T) => ({
                 url: `/items`,
                 params: {
                     types: JSON.stringify(types),
@@ -32,13 +32,13 @@ const GetItemsEndpoints = (build: Build_T ) => {
 
             providesTags: ['getItems']
         }),
-        getItem: build.query<{ item: Item_T }, {_id: string}>({
-            query: ({_id}: {_id: string}) => ({
+        getItem: build.query<{ item: Item_T }, { _id: string }>({
+            query: ({ _id }: { _id: string }) => ({
                 url: `/items/item/${_id}`
             })
         }),
         addRating: build.mutation<{ response: boolean }, AddRatingReq_T>({
-            query: ({value, item_id}: AddRatingReq_T) => ({
+            query: ({ value, item_id }: AddRatingReq_T) => ({
                 url: `/items/rating`,
                 method: 'POST',
                 body: {
@@ -46,8 +46,8 @@ const GetItemsEndpoints = (build: Build_T ) => {
                 }
             }),
         }),
-        getRating: build.query<{ rating: number, amount: number }, {item_id: string}>({
-            query: ({item_id}: {item_id: string}) => ({
+        getRating: build.query<{ rating: number, amount: number }, { item_id: string }>({
+            query: ({ item_id }: { item_id: string }) => ({
                 url: `/items/rating`,
                 params: {
                     item_id

@@ -26,6 +26,7 @@ const BasketSummary: BasketSummary_T = ({ cart_items, error }) => {
                 let { item_id, amount } = cart_item
                 try {
                     let response = await getItemAPI({ _id: item_id })
+                    console.log(response.data.item)
                     let { price } = response.data.item
                     a = a + (price * amount)
                 } catch (e) {

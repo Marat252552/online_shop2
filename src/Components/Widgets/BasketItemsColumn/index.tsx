@@ -15,6 +15,8 @@ const BasketItemsColumn: BasketItemsColumn_T = ({ cart_items, error }) => {
         </div>
     }
 
+    console.log(cart_items)
+
     return <div className={styles.basket_items_column}>
 
 
@@ -27,7 +29,7 @@ const BasketItemsColumn: BasketItemsColumn_T = ({ cart_items, error }) => {
 
         {cart_items && !cart_items[0] && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
             <Empty description={
-                <span>В избранном пусто</span>
+                <span>В корзине пусто</span>
             } image={Empty.PRESENTED_IMAGE_SIMPLE} />
         </div>}
 

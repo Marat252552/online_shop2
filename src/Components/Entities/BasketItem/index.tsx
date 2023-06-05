@@ -13,18 +13,18 @@ const BasketItem = ({ cart_item }: { cart_item: CartItem_T }) => {
     let item = data?.item
 
     return <>
-        <div className={styles.main_container}>
+        {item && <div className={styles.main_container}>
 
-            {item && <>
-                <div className={styles.image_and_description_module}>
-                    <div className={styles.image_container}>
-                        <ItemImage img_name={item.main_img_name} />
-                    </div>
-                    <BasketItemDescription item={item} />
+            <div className={styles.image_and_description_module}>
+                <div className={styles.image_container}>
+                    <ItemImage img_name={item.main_img_name} />
                 </div>
-                <BasketItemPrice price={item.price} />
-            </>}
-        </div>
+                <BasketItemDescription item={item} />
+            </div>
+            <BasketItemPrice price={item.price} />
+
+        </div>}
+
     </>
 
 

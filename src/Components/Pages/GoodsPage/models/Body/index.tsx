@@ -37,7 +37,15 @@ const Body = () => {
 
 
                 <div className={styles.items_module_container}>
-                    <MobileFilterNavbar />
+                    <MobileFilterNavbar
+                        brands={brandsData?.brands}
+                        types={typesData?.types}
+                        selectedBrands={selectedBrands}
+                        setSelectedBrands={setSelectedBrands}
+                        selectedTypes={selectedTypes}
+                        setSelectedTypes={setSelectedTypes}
+                        setSearchValue={setSearchValue}
+                    />
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center', width: '100%' }}>
                         {itemsData && itemsData?.items.map(item => <Item item={item} />)}
                     </div>
