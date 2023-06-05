@@ -1,14 +1,14 @@
 import SmallModuleTemplate from '../../../../Templates/Modules/SmallModuleTemplate';
-import AuthAPI from '../../../../../API/AuthAPI/AuthAPI';
 import UserSlice from '../../../../../state/Reducers/UserSlice';
 import { useAppDispatch } from '../../../../../state/hooks';
 import {useEffect} from 'react'
 import FormComponent from './components/FormComponent';
 import { useNavigate } from 'react-router-dom';
+import RestAPI from '../../../../../API/RestAPI';
 
 
 const Body = () => {
-    let [loginAPI, {data: loginData, isSuccess, isError, error}] = AuthAPI.useLoginMutation()
+    let [loginAPI, {data: loginData, isSuccess, isError, error}] = RestAPI.useLoginMutation()
     let {setToken, setUser} = UserSlice.actions
     let dispatch = useAppDispatch()
     let navigate = useNavigate()

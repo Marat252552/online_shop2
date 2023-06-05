@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { getItemAPI } from '../../../API/AxiosAPI'
 
 
-const BasketSummary: BasketSummary_T = ({ cart_items }) => {
+const BasketSummary: BasketSummary_T = ({ cart_items, error }) => {
 
     let delivery = 0
 
@@ -37,14 +37,29 @@ const BasketSummary: BasketSummary_T = ({ cart_items }) => {
         }
         asyncFunct()
     }, [cart_items])
-    
+    // @ts-ignore
+    if (error?.status) {
+        return <div className={styles.container}>
+            <h3>Корзина</h3>
+            <div className={styles.main_info_module}>
+                <Specification feature='Промежуточный итог' value={'0₽'} />
+                <Specification feature='Доставка' value={'0₽'} />
+                <JustLine />
+                <Specification feature='Итого' value={'0₽'} isValueBold={true} />
+            </div>
+            <BlackOvalButton>
+                Далее
+            </BlackOvalButton>
+        </div>
+    }
+
     return <div className={styles.container}>
         <h3>Корзина</h3>
         <div className={styles.main_info_module}>
-            <Specification feature='Промежуточный итог' value={(loading)? <SkeletonInput active size='small'/>: total + '₽' } />
+            <Specification feature='Промежуточный итог' value={(loading) ? <SkeletonInput active size='small' /> : total + '₽'} />
             <Specification feature='Доставка' value={delivery + '₽'} />
             <JustLine />
-            <Specification feature='Итого' value={(loading)? <SkeletonInput active size='small'/> : total + '₽'} isValueBold={true} />
+            <Specification feature='Итого' value={(loading) ? <SkeletonInput active size='small' /> : total + '₽'} isValueBold={true} />
         </div>
         <BlackOvalButton>
             Далее

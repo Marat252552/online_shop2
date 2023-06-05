@@ -20,7 +20,8 @@ const GetFavoritesEndpoints = (build: Build_T ) => {
         getFavorites: build.query<{favorite_items: FavoriteItem_T[]}, void>({
             query: () => ({
                 url: `/favorites`,
-            })
+            }),
+            providesTags: ['getFavorites']
         })
     }
 }

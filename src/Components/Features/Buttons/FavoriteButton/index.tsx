@@ -8,7 +8,7 @@ import { Spin } from "antd"
 
 const FavoriteButton = ({ item }: { item: Item_T }) => {
 
-    let { data, refetch, isLoading } = RestAPI.useGetFavoritesQuery()
+    let { data, refetch, isLoading, isError } = RestAPI.useGetFavoritesQuery()
 
     let [addFavoriteAPI, { isLoading: isLoadingAdd }] = RestAPI.useAddFavoriteMutation()
     let [removeFavoriteAPI, { isLoading: isLoadingRemove }] = RestAPI.useRemoveFavoriteMutation()
@@ -22,6 +22,10 @@ const FavoriteButton = ({ item }: { item: Item_T }) => {
 
     if (isLoading) {
         return <SkeletonButton />
+    }
+
+    if(isError) {
+        return <div><HeartOutlined /></div>
     }
 
     if (isLoadingAdd || isLoadingRemove) {

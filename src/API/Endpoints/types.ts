@@ -51,3 +51,16 @@ export type AddFavoriteReq_T = {
 export type RemoveFavoriteReq_T = {
     favorite_item_id: string
 }
+
+export type BestItem_T = {
+    item: Item_T,
+    rating: number
+}
+
+export type GetThreeBestItemsDataRes_T = {
+    items: {
+        item1: BestItem_T,
+        item2: BestItem_T,
+        item3: BestItem_T
+    }
+}

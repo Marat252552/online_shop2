@@ -5,7 +5,13 @@ import { Empty } from 'antd';
 import FavoriteItem from "../../Entities/FavoriteItem";
 
 
-const FavoriteItemsColumn: FavoriteItemsColumn_T = ({ favorite_items }) => {
+const FavoriteItemsColumn: FavoriteItemsColumn_T = ({ favorite_items, isError }) => {
+
+    if (isError) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
+        <Empty description={
+            <span>В избранном пусто</span>
+        } image={Empty.PRESENTED_IMAGE_SIMPLE} />
+    </div>
 
     return <div className={styles.basket_items_column}>
 
@@ -16,11 +22,11 @@ const FavoriteItemsColumn: FavoriteItemsColumn_T = ({ favorite_items }) => {
             <BasketItemSkeleton />
         </>}
 
-        {favorite_items && !favorite_items[0] && <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%'}}>
+        {favorite_items && !favorite_items[0] && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
             <Empty description={
                 <span>В избранном пусто</span>
             } image={Empty.PRESENTED_IMAGE_SIMPLE} />
-            </div>}
+        </div>}
 
         {favorite_items && favorite_items.map((favorite_item) => {
             if (favorite_item) return <FavoriteItem favorite_item={favorite_item} />

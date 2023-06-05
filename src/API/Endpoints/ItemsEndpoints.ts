@@ -1,6 +1,6 @@
 import { Item_T } from "../../Components/Shared/types"
 import { Build_T } from "../types"
-import { AddRatingReq_T, CreateItemReq_T, GetItemsReq_T, GetItemsRes_T } from "./types"
+import { AddRatingReq_T, CreateItemReq_T, GetItemsReq_T, GetItemsRes_T, GetThreeBestItemsDataRes_T } from "./types"
 
 const GetItemsEndpoints = (build: Build_T ) => {
     return {
@@ -52,6 +52,11 @@ const GetItemsEndpoints = (build: Build_T ) => {
                 params: {
                     item_id
                 }
+            }),
+        }),
+        getThreeBestItems: build.query<GetThreeBestItemsDataRes_T, void>({
+            query: () => ({
+                url: `/items/rating/threebestitems`
             }),
         }),
     }

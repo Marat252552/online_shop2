@@ -24,13 +24,13 @@ const GetCartEndpoints = (build: Build_T ) => {
                 url: `/cart/remove_all_same/${item_id}`,
                 method: 'DELETE'
             }),
-            invalidatesTags: ['getCartItems', 'getCardItemAmount']
+            invalidatesTags: ['getCartItems', 'getCartItemAmount']
         }),
         getCartItemAmount: build.query<{ amount: number}, GetCartItemAmountReq_T>({
             query: ({item_id}: GetCartItemAmountReq_T) => ({
                 url: `/cart/${item_id}`,
             }),
-            providesTags: ['getCardItemAmount']
+            providesTags: ['getCartItemAmount']
         }),
         getCartItems: build.query<{ cart_items: CartItem_T[]}, void>({
             query: () => ({

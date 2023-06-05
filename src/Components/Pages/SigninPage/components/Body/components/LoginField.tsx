@@ -1,12 +1,12 @@
 import { FieldErrors } from "react-hook-form"
 import CustomTextField from "../../../../../UI/CustomTextField"
 import { Inputs_T } from "../lib/types"
-import AuthAPI from "../../../../../../API/AuthAPI/AuthAPI"
+import RestAPI from "../../../../../../API/RestAPI"
 
 
 
 const LoginField = ({ register, errors }: { register: any, errors: FieldErrors<Inputs_T> }) => {
-    let [isLoginDupl, { data }] = AuthAPI.useIsLoginDuplMutation()
+    let [isLoginDupl, { data }] = RestAPI.useIsLoginDuplMutation()
     return <>
         <CustomTextField
             {...register('login', {

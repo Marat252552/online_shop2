@@ -7,14 +7,14 @@ import BasketItemsColumn from '../../../../Widgets/BasketItemsColumn'
 
 const Body = () => {
 
-    let { data } = RestAPI.useGetCartItemsQuery()
+    let { data, error } = RestAPI.useGetCartItemsQuery()
 
     let cart_items = data?.cart_items
 
     return <div className={sharedStyles.medium_max_width_container}>
         <div className={styles.main_container}>
-            <BasketItemsColumn cart_items={cart_items} />
-            <BasketSummary cart_items={cart_items} />
+            <BasketItemsColumn error={error} cart_items={cart_items} />
+            <BasketSummary error={error} cart_items={cart_items} />
         </div>
     </div>
 }

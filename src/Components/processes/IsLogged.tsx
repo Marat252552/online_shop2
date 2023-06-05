@@ -1,11 +1,11 @@
 import { useEffect } from "react"
-import AuthAPI from "../../API/AuthAPI/AuthAPI"
 import { useAppDispatch } from "../../state/hooks"
 import UserSlice from "../../state/Reducers/UserSlice"
+import RestAPI from "../../API/RestAPI"
 
 
 const IsLoggedContainer = ({children}: {children: JSX.Element}) => {
-    let {data: loggedData} = AuthAPI.useIsLoggedQuery()
+    let {data: loggedData} = RestAPI.useIsLoggedQuery()
     let { setUser, setToken } = UserSlice.actions
     let dispatch = useAppDispatch()
     useEffect(() => {
