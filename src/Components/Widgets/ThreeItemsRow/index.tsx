@@ -9,7 +9,7 @@ const ThreeItemsRow = () => {
 
     let items = data?.items
 
-    if(!items) return <div></div>
+    if(!items || !items[0]) return <div></div>
 
     return <div className={styles.items_row}>
         <Item item={items.item1.item}/>
