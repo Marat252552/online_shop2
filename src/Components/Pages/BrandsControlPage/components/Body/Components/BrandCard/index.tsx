@@ -10,7 +10,7 @@ const BrandCard = ({brand, deleteBrand}: {brand: Brand_T, deleteBrand: ({_id}: {
                 deleteBrand({_id: brand._id})
             }}>Удалить брэнд</Button>}
             descriptions={<span>{brand.name}</span>}
-            img_name={brand.img_name}
+            src={brand.img_link}
         />
     </>
 }

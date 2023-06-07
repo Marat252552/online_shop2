@@ -3,11 +3,11 @@ import styles from './lib/styles.module.css'
 import { Props_T } from './lib/types'
 
 
-const ElementCard = ({ img_name, descriptions, buttons }: Props_T) => {
+const ElementCard = ({ src, descriptions, buttons }: Props_T) => {
     return <div className={styles.mainContainer}>
         <div className={styles.container}>
-            {img_name && <div className={styles.image_module}>
-                <ItemImage img_name={img_name} />
+            {src && <div className={styles.image_module}>
+                <ItemImage src={src} />
             </div>}
 
             <div className={styles.descriptionAndButtons_module}>

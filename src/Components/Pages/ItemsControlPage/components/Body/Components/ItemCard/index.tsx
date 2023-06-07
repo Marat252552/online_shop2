@@ -17,7 +17,7 @@ const ItemCard = ({ item, type, brand, deleteItem }: { item: Item_T, type: Type_
                 <span style={{fontSize: '10px'}}>{type?.name || 'Категория'}</span>
                 <span>{item.price + ' Рублей' || 'Цена'}</span>
             </>}
-            img_name={item.main_img_name}
+            src={item.main_img_link}
         />
     </>
 }

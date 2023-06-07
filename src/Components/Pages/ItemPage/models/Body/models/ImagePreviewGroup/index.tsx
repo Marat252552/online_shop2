@@ -1,10 +1,9 @@
 import { Image } from 'antd';
 import { Item_T } from '../../../../../../Shared/types';
-import { backendURL } from '../../../../../../App/config/env';
 
 const ImagePreviewGroup = ({item}: {item: Item_T}) => {
 
-    let {images_names} = item
+    let {images_links} = item
 
     return <div>
         <Image.PreviewGroup
@@ -12,8 +11,8 @@ const ImagePreviewGroup = ({item}: {item: Item_T}) => {
             onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
         }}
     >   
-        {images_names.map(image_name => {
-            return <Image width={100} style={{objectFit: 'cover'}} height={100} src={backendURL + '/' + image_name} />
+        {images_links.map(image_link => {
+            return <Image width={100} style={{objectFit: 'cover'}} height={100} src={image_link} />
         })}
         
         

@@ -23,7 +23,6 @@ const UserCard = ({ user, deleteUser, grantAccess, lowerAccess }: Props_T) => {
                 </>
             }
             descriptions={<UserDescription user={user} />}
-            // img_name={iphone13}
         />
     </>
 }

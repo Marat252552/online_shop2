@@ -17,7 +17,7 @@ const Body = () => {
         <LargeModuleTemplate>
             {itemData?.item && <div className={styles.mainContainer}>
                 <div className={styles.image_container}>
-                    <ItemImage img_name={itemData.item.main_img_name} />
+                    <ItemImage src={itemData.item.main_img_link} />
                 </div>
                 <ItemInfo item={itemData.item} />
             </div>}
