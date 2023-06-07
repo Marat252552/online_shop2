@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import styles from './lib/styles.module.css'
 import { setupStore } from '../../state/state'
 import { Provider } from 'react-redux'
@@ -16,7 +16,7 @@ const App = () => {
     return <div className={styles.body}>
         <div className={styles.wrapper}>
             <IsLoggedContainer>
-                <BrowserRouter>
+                <HashRouter>
                     <Routes>
                         {status === Statuses.user && PublicRoutes.map(route => {
                             return <Route key={route.path} path={route.path} Component={route.component} />
@@ -29,7 +29,7 @@ const App = () => {
                         })}
                         <Route path='*' element={<Navigate to='/' />} />
                     </Routes>
-                </BrowserRouter>
+                </HashRouter>
             </IsLoggedContainer>
         </div>
     </div>
