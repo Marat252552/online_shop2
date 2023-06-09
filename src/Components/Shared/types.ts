@@ -45,7 +45,13 @@ export type Element_T = {
 export type Brand_T = {
     _id: string,
     name: string,
-    img_link: string
+    main_image: Image_T
+}
+
+export type Image_T = {
+    file_name: string,
+    key: string,
+    link: string
 }
 
 export type Item_T = {
@@ -53,8 +59,8 @@ export type Item_T = {
     name: string,
     brand_id: string,
     type_id: string,
-    main_img_link: string,
-    images_links: string[],
+    main_image: Image_T,
+    images: Image_T[],
     description: string,
     price: number
 }

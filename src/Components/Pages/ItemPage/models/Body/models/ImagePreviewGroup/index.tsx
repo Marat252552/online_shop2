@@ -3,7 +3,7 @@ import { Item_T } from '../../../../../../Shared/types';
 
 const ImagePreviewGroup = ({item}: {item: Item_T}) => {
 
-    let {images_links} = item
+    let {images} = item
 
     return <div>
         <Image.PreviewGroup
@@ -11,8 +11,8 @@ const ImagePreviewGroup = ({item}: {item: Item_T}) => {
             onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
         }}
     >   
-        {images_links.map(image_link => {
-            return <Image width={100} style={{objectFit: 'cover'}} height={100} src={image_link} />
+        {images.map(image => {
+            return <Image width={100} style={{objectFit: 'cover'}} height={100} src={image.link} />
         })}
         
         

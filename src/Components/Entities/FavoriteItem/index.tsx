@@ -18,7 +18,7 @@ const FavoriteItem = ({ favorite_item }: { favorite_item: FavoriteItem_T }) => {
             {item && <>
                 <div className={styles.image_and_description_module}>
                     <div className={styles.image_container}>
-                        <ItemImage src={item.main_img_link} />
+                        <ItemImage src={item.main_image.link} />
                     </div>
                     <BasketItemDescription item={item} />
                 </div>

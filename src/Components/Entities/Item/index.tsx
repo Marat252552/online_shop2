@@ -10,7 +10,7 @@ const Item = ({ item }: { item: Item_T }) => {
     return <div className={styles.container}>
         <div onClick={() => { navigate(`/goods/${item._id}`) }}>
             <ItemImage
-                src={item?.main_img_link}
+                src={item?.main_image.link}
             />
         </div>
         <ItemAnnotation item={item} />
