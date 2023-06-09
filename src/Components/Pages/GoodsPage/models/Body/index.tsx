@@ -5,6 +5,7 @@ import BrandsAndTypesFilterBar from '../../../../Widgets/BrandsAndTypesFilterBar
 import RestAPI from '../../../../../API/RestAPI'
 import { useState } from 'react'
 import Item from '../../../../Entities/Item'
+import VisibleOnFullscreenVersion from '../../../../Templates/VisibilityModules/VisibleOnFullscreenVersion'
 
 
 const Body = () => {
@@ -22,23 +23,34 @@ const Body = () => {
         <LargeModuleTemplate>
             <div className={styles.container}>
 
-                <BrandsAndTypesFilterBar
-                    brands={brandsData?.brands}
-                    types={typesData?.types}
-                    selectedBrands={selectedBrands}
-                    setSelectedBrands={setSelectedBrands}
-                    selectedTypes={selectedTypes}
-                    setSelectedTypes={setSelectedTypes}
-                    setSearchValue={setSearchValue}
-                />
+                <VisibleOnFullscreenVersion>
+                    <BrandsAndTypesFilterBar
+                        brands={brandsData?.brands}
+                        types={typesData?.types}
+                        selectedBrands={selectedBrands}
+                        setSelectedBrands={setSelectedBrands}
+                        selectedTypes={selectedTypes}
+                        setSelectedTypes={setSelectedTypes}
+                        setSearchValue={setSearchValue}
+                    />
+                </VisibleOnFullscreenVersion>
+
 
                 <div className={styles.items_module_container}>
-                    <MobileFilterNavbar />
-                    <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px'}}>
+                    <MobileFilterNavbar
+                        brands={brandsData?.brands}
+                        types={typesData?.types}
+                        selectedBrands={selectedBrands}
+                        setSelectedBrands={setSelectedBrands}
+                        selectedTypes={selectedTypes}
+                        setSelectedTypes={setSelectedTypes}
+                        setSearchValue={setSearchValue}
+                    />
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center', width: '100%' }}>
                         {itemsData && itemsData?.items.map(item => <Item item={item} />)}
                     </div>
                 </div>
-                
+
             </div>
         </LargeModuleTemplate>
     </>

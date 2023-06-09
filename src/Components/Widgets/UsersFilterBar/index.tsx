@@ -8,7 +8,7 @@ const StatusesFilterBar = ({ statuses, selectedStatuses, setSelectedStatuses }: 
     return <div className={styles.visible_on_fullscreen_version_container}>
         Статус
         {statuses && <CustomSelect
-            placeholder='Любой производитель'
+            placeholder='Любой статус'
             Options={statuses}
             selectedValues={selectedStatuses}
             setSelectedValues={setSelectedStatuses}

@@ -1,6 +1,5 @@
 import { Statuses } from '../../Shared/types'
 import UserDescription from './components/UserDescription'
-import iphone13 from './../../../Assets/Images/iphone13.png'
 import ElementCard from '../../UI/ElementCard'
 import ChangeAccessButton from './components/ChangeAccessButton'
 import DeleteUserButton from './components/DeleteUserButton'
@@ -24,7 +23,6 @@ const UserCard = ({ user, deleteUser, grantAccess, lowerAccess }: Props_T) => {
                 </>
             }
             descriptions={<UserDescription user={user} />}
-            imgSRC={iphone13}
         />
     </>
 }

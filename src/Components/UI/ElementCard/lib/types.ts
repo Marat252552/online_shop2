@@ -1,5 +1,5 @@
 export type Props_T = {
-    imgSRC?: string, 
+    src?: string, 
     descriptions: JSX.Element | JSX.Element[] | undefined | boolean, 
     buttons: JSX.Element | JSX.Element[] | boolean
 }

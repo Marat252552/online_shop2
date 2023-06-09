@@ -1,11 +1,11 @@
 import { LogoutOutlined } from "@ant-design/icons"
-import AuthAPI from "../../API/AuthAPI/AuthAPI"
-import UserSlice from "../../state/Reducers/UserSlice"
-import { useAppDispatch } from "../../state/hooks" 
+import UserSlice from "../../../../state/Reducers/UserSlice"
+import { useAppDispatch } from "../../../../state/hooks" 
 import { useEffect } from 'react'
+import RestAPI from "../../../../API/RestAPI"
 
 const LogoutButton = () => {
-    let [logoutAPI, { isSuccess }] = AuthAPI.useLogoutMutation()
+    let [logoutAPI, { isSuccess }] = RestAPI.useLogoutMutation()
 
     let { logout } = UserSlice.actions
     let dispatch = useAppDispatch()
@@ -16,7 +16,10 @@ const LogoutButton = () => {
     return <>
         <LogoutOutlined
             style={{ color: 'white', background: 'black', padding: '4px', borderRadius: '5px' }}
-            onClick={() => { logoutAPI() }}
+            onClick={async () => { 
+                localStorage.removeItem('accessToken')
+                await logoutAPI()
+             }}
         />
     </>
 }

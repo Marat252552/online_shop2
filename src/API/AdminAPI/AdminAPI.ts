@@ -8,9 +8,12 @@ const AdminAPI = createApi({
     baseQuery: baseQueryWithReauth,
     tagTypes: ['getUsers'],
     endpoints: (build) => ({
-        getUsers: build.query<{ users: User_T[]}, void>({
-            query: () => ({
-                url: '/admin/users'
+        getUsers: build.query<{ users: User_T[]}, {statuses: string[]}>({
+            query: ({statuses}: {statuses: string[]}) => ({
+                url: '/admin/users',
+                params: {
+                    statuses: JSON.stringify(statuses)
+                }
             }),
             providesTags: ['getUsers']
         }),

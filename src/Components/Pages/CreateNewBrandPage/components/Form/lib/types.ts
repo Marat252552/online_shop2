@@ -1,4 +1,4 @@
 export type Inputs_T = {
-    name: string,
-    filesList: File[]
+    main_img_UID: string,
+    name: string
 }

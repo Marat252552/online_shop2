@@ -10,26 +10,29 @@ import SpecialistNormalVersion from './models/Specialist/NormalVersion'
 
 
 const Header = () => {
-    const {status} = useAppSelector(state => state.UserSlice.user)
+    const { status } = useAppSelector(state => state.UserSlice.user)
     let navigate = useNavigate()
     let links = [
-        { name: 'Goods', path: '/goods' },
-        { name: 'Item', path: '/item' },
+        { name: 'Товары', path: '/goods' }
     ]
     return <>
         <LargeModuleTemplate>
             <div className={styles.container}>
+
                 <ActiveSpan
                     onClick={() => { navigate('/') }}
-                    style={{fontSize: '20px'}}
-                    >CONTROL</ActiveSpan>
-                {status === Statuses.user && <>
+                    style={{ fontSize: '20px' }}
+                >CONTROL</ActiveSpan>
+
+                {status === Statuses.user && <div style={{ width: '100%' }}>
                     <UserNormalVersion links={links} />
                     <UserMobileVersion links={links} />
-                </>}
-                {status !== Statuses.user && <>
+                </div>}
+
+                {status !== Statuses.user && <div style={{ width: '100%' }}>
                     <SpecialistNormalVersion />
-                </>}
+                </div>}
+
             </div>
         </LargeModuleTemplate>
     </>

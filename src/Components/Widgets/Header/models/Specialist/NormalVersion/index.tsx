@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-import LogoutButton from '../../../../../Features/LogoutButton'
+import LogoutButton from '../../../../../Features/Buttons/LogoutButton'
 import ActiveSpan from '../../../../../UI/ActiveSpan'
-import sharedStyles from './../../../../../Shared/styles.module.css'
 import styles from './lib/styles.module.css'
 import { useAppSelector } from '../../../../../../state/hooks'
 import { Statuses } from '../../../../../Shared/types'
+import VisibleOnFullscreenVersion from '../../../../../Templates/VisibilityModules/VisibleOnFullscreenVersion'
 
 const SpecialistNormalVersion = () => {
     let { status } = useAppSelector(state => state.UserSlice.user)
@@ -18,7 +18,7 @@ const SpecialistNormalVersion = () => {
         { value: 'Категории', url: '/typescontrol' },
     ]
     let navigate = useNavigate()
-    return <div className={sharedStyles.visible_on_fullscreen_version}>
+    return <VisibleOnFullscreenVersion>
         <div className={styles.container}>
 
             <div style={{ fontSize: '30px' }}>
@@ -45,7 +45,8 @@ const SpecialistNormalVersion = () => {
             </div>
 
         </div>
-    </div>
+    </VisibleOnFullscreenVersion>
+
 }
 
 export default SpecialistNormalVersion

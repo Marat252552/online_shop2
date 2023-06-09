@@ -1,11 +1,10 @@
-import HeaderSearchInput from '../../../../../UI/HeaderSearchInput'
 import styles from './lib/styles.module.css'
 import { HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import sharedStyles from './../../../../../Shared/styles.module.css'
 import { Link_T } from '../../../../../Shared/types'
 import { useNavigate } from 'react-router-dom'
 import ActiveSpan from '../../../../../UI/ActiveSpan'
-import LogoutButton from '../../../../../Features/LogoutButton'
+import LogoutButton from '../../../../../Features/Buttons/LogoutButton'
 import { useAppSelector } from '../../../../../../state/hooks' 
 
 
@@ -22,8 +21,7 @@ const UserNormalVersion = ({links}: {links: Link_T[]}) => {
             </div>
 
             <div className={styles.navbar_second_half}>
-                <HeaderSearchInput />
-                <HeartOutlined />
+                <HeartOutlined onClick={() => {navigate('/favorites')}}/>
                 <ShoppingCartOutlined onClick={() => {navigate('/basket')}} />
                 {token !== '' && <LogoutButton />}
             </div>

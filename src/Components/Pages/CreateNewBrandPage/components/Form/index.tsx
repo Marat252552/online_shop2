@@ -2,15 +2,28 @@ import { useForm } from "react-hook-form"
 import FormTemplate from "../../../../Templates/Other/FormTemplate"
 import { Inputs_T } from "./lib/types"
 import NameField from "./components/NameField"
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import BlackOvalButton from "../../../../UI/BlackOvalButton"
 import { useNavigate } from "react-router-dom"
 import RestAPI from "../../../../../API/RestAPI"
+import UploadMainImageField from "./components/UploadMainImageField"
+import {useState} from 'react'
+import { v4 } from "uuid"
 
 
 const Form = () => {
     let [createBrandAPI, { isSuccess }] = RestAPI.useCreateBrandMutation()
-    const { register, handleSubmit, reset, formState: { errors }} = useForm<Inputs_T>({
+
+    let [session_id, setSession_id] = useState<string>('')
+    let generateSessionId = () => {
+        let newSessionId = v4()
+        setSession_id(newSessionId)
+    }
+    useEffect(() => {
+        generateSessionId()
+    }, [])
+
+    const { register, handleSubmit, formState: { errors }} = useForm<Inputs_T>({
         mode: 'onSubmit'
     })
     let navigate = useNavigate()
@@ -18,12 +31,13 @@ const Form = () => {
         console.log(isSuccess)
         if (isSuccess) {navigate('/brands')}
     }, [isSuccess])
-    const onSubmit = async ({ name, filesList }: Inputs_T) => {
+    const onSubmit = async ({ name, main_img_UID }: Inputs_T) => {
         let formData = new FormData()
         formData.append('name', name)
-        formData.append('img', filesList[0])
+        formData.append('main_img_UID', main_img_UID)
+        formData.append('session_id', session_id)
         createBrandAPI(formData)
-        reset()
+        navigate('/brands')
     }
     return <FormTemplate onSubmit={handleSubmit(onSubmit)}>
 
@@ -32,13 +46,11 @@ const Form = () => {
             register={register}
         />
 
-        <input
-            {...register('filesList', {
-                required: 'Загрузите изображение'
-            })}
-            type='file'
+        <UploadMainImageField 
+            session_id={session_id}
+            errors={errors}
+            register={register}
         />
-        {errors.filesList?.message && <div>{errors.filesList.message.toString as any}</div>}
 
         <BlackOvalButton>Создать</BlackOvalButton>
 
