@@ -7,54 +7,49 @@ import BlackOvalButton from "../../../../UI/BlackOvalButton"
 import { useNavigate } from "react-router-dom"
 import RestAPI from "../../../../../API/RestAPI"
 import UploadMainImageField from "./components/UploadMainImageField"
-import {useState} from 'react'
+import { useState } from 'react'
 import { v4 } from "uuid"
 
 
 const Form = () => {
-    let [createBrandAPI, { isSuccess }] = RestAPI.useCreateBrandMutation()
+    let [createBrandAPI] = RestAPI.useCreateBrandMutation()
 
     let [session_id, setSession_id] = useState<string>('')
-    let generateSessionId = () => {
-        let newSessionId = v4()
-        setSession_id(newSessionId)
-    }
     useEffect(() => {
-        generateSessionId()
+        setSession_id(v4())
     }, [])
 
-    const { register, handleSubmit, formState: { errors }} = useForm<Inputs_T>({
+    const { register, handleSubmit, formState: { errors } } = useForm<Inputs_T>({
         mode: 'onSubmit'
-    })
+    }) 
     let navigate = useNavigate()
-    useEffect(() => {
-        console.log(isSuccess)
-        if (isSuccess) {navigate('/brands')}
-    }, [isSuccess])
     const onSubmit = async ({ name, main_img_UID }: Inputs_T) => {
         let formData = new FormData()
         formData.append('name', name)
         formData.append('main_img_UID', main_img_UID)
         formData.append('session_id', session_id)
         createBrandAPI(formData)
-        navigate('/brands')
+        navigate('/brandscontrol')
     }
-    return <FormTemplate onSubmit={handleSubmit(onSubmit)}>
 
-        <NameField
-            errors={errors}
-            register={register}
-        />
+    return <>
+        <FormTemplate onSubmit={handleSubmit(onSubmit)}>
 
-        <UploadMainImageField 
-            session_id={session_id}
-            errors={errors}
-            register={register}
-        />
+            <NameField
+                errors={errors}
+                register={register}
+            />
 
-        <BlackOvalButton>Создать</BlackOvalButton>
+            <UploadMainImageField
+                session_id={session_id}
+                errors={errors}
+                register={register}
+            />
 
-    </FormTemplate>
+            <BlackOvalButton>Создать</BlackOvalButton>
+
+        </FormTemplate>
+    </>
 }
 
 export default Form

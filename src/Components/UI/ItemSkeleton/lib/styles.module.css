@@ -1,0 +1,4 @@
+.container {
+    display: table-column;
+    width: 250px
+}

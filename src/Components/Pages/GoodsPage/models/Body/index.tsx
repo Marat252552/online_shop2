@@ -6,6 +6,7 @@ import RestAPI from '../../../../../API/RestAPI'
 import { useState } from 'react'
 import Item from '../../../../Entities/Item'
 import VisibleOnFullscreenVersion from '../../../../Templates/VisibilityModules/VisibleOnFullscreenVersion'
+import ItemSkeleton from '../../../../UI/ItemSkeleton'
 
 
 const Body = () => {
@@ -17,7 +18,7 @@ const Body = () => {
     let [selectedTypes, setSelectedTypes] = useState<string[]>([])
     let [searchValue, setSearchValue] = useState<string>('')
 
-    let { data: itemsData } = RestAPI.useGetItemsQuery({ brands: selectedBrands, types: selectedTypes, searchValue })
+    let { data: itemsData, isLoading, isError } = RestAPI.useGetItemsQuery({ brands: selectedBrands, types: selectedTypes, searchValue })
 
     return <>
         <LargeModuleTemplate>
@@ -48,6 +49,12 @@ const Body = () => {
                     />
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center', width: '100%' }}>
                         {itemsData && itemsData?.items.map(item => <Item item={item} />)}
+                        {isLoading && <>
+                        <ItemSkeleton />
+                        <ItemSkeleton />
+                        <ItemSkeleton />
+                        </>}
+                        {isError && <h1>Ошибка подключения к серверу</h1>}
                     </div>
                 </div>
 

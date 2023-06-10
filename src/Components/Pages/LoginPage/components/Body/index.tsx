@@ -12,6 +12,7 @@ const Body = () => {
     let {setToken, setUser} = UserSlice.actions
     let dispatch = useAppDispatch()
     let navigate = useNavigate()
+
     useEffect(() => {
         if(isSuccess && loginData) {
             let {user, accessToken} = loginData
